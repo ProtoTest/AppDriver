@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <properties>
+        <property name="filename">target/test.log</property>
+        <property name="log_pattern">%d %-5p [%C{1}:%L] %m %n</property>
+    </properties>
+
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${log_pattern}"/>
+        </Console>
+
+        <File name="TestFile" fileName="${filename}">
+            <PatternLayout>
+                <pattern>${log_pattern}</pattern>
+            </PatternLayout>
+        </File>
+    </appenders>
+    <loggers>
+        <root level="error">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="TestFile"/>
+        </root>
+
+        <root level="all">
+            <appender-ref ref="TestFile"/>
+        </root>
+    </loggers>
+</configuration>
