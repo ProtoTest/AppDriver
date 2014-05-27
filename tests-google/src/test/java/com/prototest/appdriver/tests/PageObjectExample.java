@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Brian on 5/23/2014.
  */
-public class AppiumTest extends AppiumTestBase {
+public class PageObjectExample extends AppiumTestBase {
     @Test
     public void test(){
         LoginPage loginPage = new LoginPage();

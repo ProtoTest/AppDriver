@@ -80,10 +80,12 @@ public class WebDriverLauncher {
     {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-        capabilities.setCapability("device", Config.Settings.AppiumSettings.deviceName);
+        capabilities.setCapability("deviceName", Config.Settings.AppiumSettings.deviceName);
+        capabilities.setCapability("platformVersion",Config.Settings.AppiumSettings.platformVersion);
+        capabilities.setCapability("platformName",Config.Settings.AppiumSettings.platformName);
         capabilities.setCapability("app", Config.Settings.AppiumSettings.appPath);
-        capabilities.setCapability("app-package", Config.Settings.AppiumSettings.appPackage);
-        capabilities.setCapability("app-activity", Config.Settings.AppiumSettings.appActivity);
+        capabilities.setCapability("appPackage", Config.Settings.AppiumSettings.appPackage);
+        capabilities.setCapability("appActivity", Config.Settings.AppiumSettings.appActivity);
         capabilities.setCapability("resetApp",Config.Settings.AppiumSettings.resetApp);
         URL url = null;
         try {
