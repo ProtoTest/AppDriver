@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:27 001] Starting test TestConfigValue</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:27 005] Running setUp before test</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-07-2014 11:56:28 414] launchBrowser(): Using browser = Chrome</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:28 556] Test</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-07-2014 11:56:28 558] Navigating to http://www.google.com</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:32 105] Ending test TestConfigValue</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:32 105] Running tearDown() after test</div>]]>
+    </line>
+  </reporter-output>
+  <suite name="Custom suite" duration-ms="6354" started-at="2014-07-07T17:56:26Z" finished-at="2014-07-07T17:56:33Z">
+    <groups>
+    </groups>
+    <test name="appdriver-parent" duration-ms="6354" started-at="2014-07-07T17:56:26Z" finished-at="2014-07-07T17:56:33Z">
+      <class name="com.prototest.appdriver.tests.ConfigTests">
+        <test-method status="PASS" signature="browserTestBeforeMethod(java.lang.reflect.Method)[pri:0, instance:com.prototest.appdriver.tests.ConfigTests@1cd072a9]" name="browserTestBeforeMethod" is-config="true" duration-ms="1627" started-at="2014-07-07T11:56:26Z" finished-at="2014-07-07T11:56:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.prototest.appdriver.tests.ConfigTests.TestConfigValue()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:27 001] Starting test TestConfigValue</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:27 005] Running setUp before test</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-07-2014 11:56:28 414] launchBrowser(): Using browser = Chrome</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- browserTestBeforeMethod -->
+        <test-method status="PASS" signature="TestConfigValue()[pri:0, instance:com.prototest.appdriver.tests.ConfigTests@1cd072a9]" name="TestConfigValue" duration-ms="3554" started-at="2014-07-07T11:56:28Z" finished-at="2014-07-07T11:56:32Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:28 556] Test</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-07-2014 11:56:28 558] Navigating to http://www.google.com</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestConfigValue -->
+        <test-method status="PASS" signature="browserTestAfterMethod(java.lang.reflect.Method)[pri:0, instance:com.prototest.appdriver.tests.ConfigTests@1cd072a9]" name="browserTestAfterMethod" is-config="true" duration-ms="1161" started-at="2014-07-07T11:56:32Z" finished-at="2014-07-07T11:56:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.prototest.appdriver.tests.ConfigTests.TestConfigValue()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:32 105] Ending test TestConfigValue</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-07-2014 11:56:32 105] Running tearDown() after test</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- browserTestAfterMethod -->
+      </class> <!-- com.prototest.appdriver.tests.ConfigTests -->
+    </test> <!-- appdriver-parent -->
+  </suite> <!-- Custom suite -->
+</testng-results>

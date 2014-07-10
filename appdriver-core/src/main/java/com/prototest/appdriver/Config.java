@@ -3,8 +3,6 @@ package com.prototest.appdriver;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -19,15 +17,14 @@ import java.util.ArrayList;
 public final class Config {
     private static Configuration config;
     private static final String CONFIG_FILE_NAME = "config.properties";
-    private static Logger Log = LogManager.getLogger(Config.class.getName());
 
     // static constructor
     static {
         try {
-            Log.info("Loading test configuration file: " + CONFIG_FILE_NAME);
+            Logger.info("Loading test configuration file: " + CONFIG_FILE_NAME);
             config = new PropertiesConfiguration(CONFIG_FILE_NAME);
         } catch (ConfigurationException e) {
-            Log.error("Caught ConfigurationException in: " + e.getClass().getName() + ": " + e.getMessage());
+            Logger.error("Caught ConfigurationException in: " + e.getClass().getName() + ": " + e.getMessage());
         }
     }
 
@@ -90,6 +87,7 @@ public final class Config {
             public static Integer commandDelayMs;
             public static Boolean runOnRemoteHost;
             public static String  hostIP;
+            public static int logLevel;
 
             // static class constructor
             static {
@@ -104,10 +102,11 @@ public final class Config {
                     commandDelayMs = Config.getConfigValue("commandDelayMs", 0);
                     runOnRemoteHost = Config.getConfigValue("runOnRemoteHost", false);
                     hostIP = Config.getConfigValue("hostIp", "localhost");
+                    logLevel = Config.getConfigValue("logLevel",2);
                 } catch (NullPointerException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 }
             }
 
@@ -147,9 +146,9 @@ public final class Config {
                     actionLogging = Config.getConfigValue("actionLogging", true);
                     spellChecking = Config.getConfigValue("spellChecking", true);
                 } catch (NullPointerException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 }
             }
         }
@@ -167,9 +166,9 @@ public final class Config {
                     proxyPort = Config.getConfigValue("proxyPort", 8876);
                     sslProxyPort = Config.getConfigValue("sslProxyPort", 7777);
                 } catch (NullPointerException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 }
             }
         }
@@ -186,9 +185,9 @@ public final class Config {
                     localPort = Config.getConfigValue("proxyPort", 8888);
                     localHost = Config.getConfigValue("hostIP", "localhost");
                 } catch (NullPointerException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 }
             }
         }
@@ -215,9 +214,9 @@ public final class Config {
                     platformVersion = Config.getConfigValue("platFormVersion", "");
                     resetApp = Config.getConfigValue("resetApp", true);
                 } catch (NullPointerException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    Log.error(e.getMessage());
+                    Logger.error(e.getMessage());
                 }
             }
         }

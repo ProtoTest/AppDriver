@@ -7,8 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static java.lang.CharSequence.*;
-
 //Element class can be instantiated any time but only looks for the element on the page when a function is called
 public class Element{
         private By by;
@@ -21,8 +19,10 @@ public class Element{
             this.name = name;
             this.by = by;
             this.Verify = new Verification();
-            this.driver = AppiumTestBase.getDriver();
+            this.driver = BrowserTestSuite.getDriver();
         }
+
+
 
     public Verification Verify(int timeoutSec){
         return new Verification(this,timeoutSec);
@@ -34,7 +34,14 @@ public class Element{
 
     public WebElement getElement()
     {
-        return driver.findElement(this.by);
+        if(element!=null)return element;
+        List<WebElement> elements = driver.findElements(this.by);
+        for(org.openqa.selenium.WebElement element : elements){
+            if(element.isDisplayed()&&element.isEnabled()){
+                this.element = (WebElement) element;
+            }
+        }
+        return this.element;
     }
 
     public Point getLocation() {
@@ -93,7 +100,7 @@ public class Element{
         getElement().sendKeys(text);
     }
 
-    public WebElement findElement(By by) {
+    public org.openqa.selenium.WebElement findElement(By by) {
         return getElement().findElement(by);
     }
 
@@ -111,7 +118,7 @@ public class Element{
     }
 
 
-    public List<WebElement> findElements(By by) {
+    public List<org.openqa.selenium.WebElement> findElements(By by) {
         return getElement().findElements(by);
     }
 
@@ -133,7 +140,7 @@ public class Element{
     }
 
     public Element waitUntilVisible() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait((org.openqa.selenium.WebDriver)driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return this;
     }

@@ -1,6 +1,6 @@
 package com.prototest.appdriver.pageobjects.google;
 
-import com.prototest.appdriver.BrowserTestBase;
+import com.prototest.appdriver.BrowserTestSuite;
 import com.prototest.appdriver.Element;
 import org.openqa.selenium.By;
 
@@ -16,7 +16,7 @@ public class GoogleHomePage {
     public static GoogleHomePage OpenGoogle()
     {
 
-        BrowserTestBase.getDriver().navigate().to("http://www.google.com/");
+        BrowserTestSuite.getDriver().navigate().to("http://www.google.com/");
         return new GoogleHomePage();
     }
 

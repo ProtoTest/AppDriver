@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="appdriver-parent"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="33.647">
+  <properties />
+  
+  
+            <testcase name="TestConfigValue" time="33.647" classname="com.prototest.appdriver.tests.ConfigTests" />
+      
+</testsuite>

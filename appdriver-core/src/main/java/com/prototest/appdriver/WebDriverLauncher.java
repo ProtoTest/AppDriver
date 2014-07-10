@@ -1,8 +1,5 @@
 package com.prototest.appdriver;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,15 +9,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverLauncher {
     public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone};
-    private WebDriver driver;
-    private static Logger Log = LogManager.getLogger(WebDriverLauncher.class.getName());
+    private org.openqa.selenium.WebDriver driver;
 
     public WebDriver launchBrowser(Browser browser) {
         switch(browser) {
@@ -39,9 +35,9 @@ public class WebDriverLauncher {
                 break;
         }
 
-        Log.debug("launchBrowser(): Using browser = " + browser.toString());
+        Logger.debug("launchBrowser(): Using browser = " + browser.toString());
         driver.manage().deleteAllCookies();
-         return driver;
+         return new WebDriver(driver);
     }
 
 
@@ -64,19 +60,19 @@ public class WebDriverLauncher {
         }
     }
 
-    public WebDriver launchRemoteBrowser(Browser browser, String host)
+    public org.openqa.selenium.WebDriver launchRemoteBrowser(Browser browser, String host)
     {
         DesiredCapabilities desiredCapabilities = getCapabilitiesForBrowser(browser);
         try {
             URL remoteAddress = new URL("http://"+ host +":4444/wd/hub");
             //return new EventedWebDriver(new RemoteWebDriver(remoteAddress, desiredCapabilities)).driver;
         } catch (MalformedURLException e) {
-            Log.error(e.getMessage());
+            Logger.error(e.getMessage());
         }
         return null;
     }
 
-    public WebDriver launchAppDriver()
+    public org.openqa.selenium.WebDriver launchAppDriver()
     {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
@@ -96,12 +92,12 @@ public class WebDriverLauncher {
         return new RemoteWebDriver(url,capabilities);
     }
 
-    private WebDriver startSafariBrowser() {
+    private org.openqa.selenium.WebDriver startSafariBrowser() {
         SafariOptions options = new SafariOptions();
         return new SafariDriver(options);
     }
 
-    private WebDriver startIEBrowser() {
+    private org.openqa.selenium.WebDriver startIEBrowser() {
         DesiredCapabilities ieCapabilities =  DesiredCapabilities.internetExplorer();
         ieCapabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
         ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
@@ -109,22 +105,24 @@ public class WebDriverLauncher {
     }
 
     private void setChromeDriverPath() {
-        String currentModulePath = System.getProperty("user.dir");
-        int index = currentModulePath.lastIndexOf("/");
-        String thisModuleName = currentModulePath.substring(index);
-        String chromePath = currentModulePath.replace(thisModuleName, "/appdriver-core/chromedriver");
-
+        String currentModulePath = null;
+        try {
+            currentModulePath = new java.io.File( "." ).getCanonicalPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String chromePath = currentModulePath += "\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", chromePath);
     }
 
-    private WebDriver startChromeBrowser() {
+    private org.openqa.selenium.WebDriver startChromeBrowser() {
         ChromeOptions options = new ChromeOptions();
         setChromeDriverPath();
 
         return new ChromeDriver();
     }
 
-    private WebDriver startFirefoxBrowser() {
+    private org.openqa.selenium.WebDriver startFirefoxBrowser() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         return new FirefoxDriver();
