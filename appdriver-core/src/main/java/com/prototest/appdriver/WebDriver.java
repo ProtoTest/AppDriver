@@ -9,7 +9,7 @@ import java.util.*;
 
 public class WebDriver{
 
-    private EventFiringWebDriver driver;
+    public EventFiringWebDriver driver;
     public WebDriver(org.openqa.selenium.WebDriver driver){
         this.driver = new EventFiringWebDriver(driver);
         RegisterEvents();
@@ -151,17 +151,6 @@ public class WebDriver{
         return driver.manage();
     }
 
-//    public static ElementVerification Verify(this IWebElement element)
-//    {
-//        return new ElementVerification(new Element(element), Config.Settings.runTimeSettings.ElementTimeoutSec,
-//                false);
-//    }
-//
-//    public static ElementVerification WaitUntil(this IWebElement element)
-//    {
-//        return new ElementVerification(new Element(element), Config.Settings.runTimeSettings.ElementTimeoutSec, true);
-//    }
-//
     public org.openqa.selenium.WebElement hide(org.openqa.selenium.WebElement element)
     {
         return
@@ -184,35 +173,35 @@ public class WebDriver{
 //        return element.FindElement(by);
 //    }
 //
-//    public static WebElement GetParent(WebElement element)
-//    {
-//        IWebDriver driver = WebDriverTestBase.driver;
-//        return (IWebElement) element.FindElement(By.XPath(".."));
-//    }
-//
+    public static WebElement getParent(WebElement element)
+    {
+
+        return (WebElement) element.findElement(By.xpath(".."));
+    }
+
 //    public static string GetHtml(this IWebElement element)
 //    {
 //        return element.GetAttribute("outerHTML");
 //    }
 //
-//    public static string GetHtml(this IWebElement element, int length)
-//    {
-//        try
-//        {
-//            string html = element.GetAttribute("innerHTML").Replace("\r\n","");
-//            if (html.Length <= length)
-//                return html;
-//            int halfLength = length/2;
-//            string start = html.Substring(0, halfLength);
-//            string end = html.Substring((html.Length - halfLength), halfLength);
-//            return string.Format("{0}...{1}", start, end);
-//        }
-//        catch (Exception e)
-//        {
-//            return "HTML Not found " + e.Message;
-//        }
-//
-//    }
+    public static String getHtml(WebElement element, int length)
+    {
+        try
+        {
+            String html = element.getAttribute("innerHTML").replace("\r\n","");
+            if (html.length() <= length)
+                return html;
+            int halfLength = length/2;
+            String start = html.substring(0, halfLength);
+            String end = html.substring((html.length() - halfLength), halfLength);
+            return String.format("{0}...{1}", start, end);
+        }
+        catch (Exception e)
+        {
+            return "HTML Not found " + e.getMessage();
+        }
+
+    }
 //
     public boolean isStale(org.openqa.selenium.WebElement element)
     {
@@ -351,11 +340,11 @@ public class WebDriver{
 //    public static void VerifyElementPresent(this IWebDriver driver, By by, bool isPresent = true)
 //    {
 //        int count = driver.FindElements(by).Count;
-//        Verify(isPresent && count == 0, "VerifyElementPresent Failed : Element : " + @by +
+//        verify(isPresent && count == 0, "VerifyElementPresent Failed : Element : " + @by +
 //            (isPresent ? " found" : " not found"));
 //    }
 //
-//    public static void Verify(bool condition, string message)
+//    public static void verify(bool condition, string message)
 //    {
 //        if (!condition)
 //        {
@@ -396,12 +385,12 @@ public class WebDriver{
 //        throw new ElementNotVisibleException("No element visible for : " + @by);
 //    }
 //
-//    public static void VerifyElementVisible(this IWebDriver driver, By by, bool isVisible = true)
+//    public static void VerifyElementVisible(this IWebDriver driver, By by, bool visible = true)
 //    {
 //        ReadOnlyCollection<IWebElement> elements = driver.FindElements(by);
 //        int count = elements.Count;
 //        bool visible = false;
-//        if (isVisible && count != 0)
+//        if (visible && count != 0)
 //        {
 //            foreach (IWebElement element in elements)
 //            {
@@ -411,15 +400,15 @@ public class WebDriver{
 //                }
 //            }
 //        }
-//        Verify(isVisible != visible,
+//        verify(visible != visible,
 //                "VerifyElementVisible Failed : Element : " + @by +
-//            (isVisible ? " visible" : " not visible"));
+//            (visible ? " visible" : " not visible"));
 //    }
 //
 //    public static void VerifyElementText(this IWebDriver driver, By by, string expectedText)
 //    {
 //        string actualText = driver.FindElement(by).Text;
-//        Verify(actualText != expectedText,
+//        verify(actualText != expectedText,
 //                "VerifyElementText Failed : Expected : " + @by + " Expected text : '" + expectedText +
 //            "' + Actual '" + actualText);
 //    }

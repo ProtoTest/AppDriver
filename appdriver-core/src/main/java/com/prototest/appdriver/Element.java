@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 //Element class can be instantiated any time but only looks for the element on the page when a function is called
-public class Element{
+public class Element implements WebElement{
         private By by;
         private WebDriver driver;
         private String name;
@@ -24,7 +24,10 @@ public class Element{
 
 
 
-    public Verification Verify(int timeoutSec){
+    public Verification verify(int timeoutSec){
+        return new Verification(this,timeoutSec);
+    }
+    public Verification WaitUntil(int timeoutSec){
         return new Verification(this,timeoutSec);
     }
 
@@ -34,14 +37,30 @@ public class Element{
 
     public WebElement getElement()
     {
-        if(element!=null)return element;
+        if(!isStale()) return element;
         List<WebElement> elements = driver.findElements(this.by);
         for(org.openqa.selenium.WebElement element : elements){
             if(element.isDisplayed()&&element.isEnabled()){
                 this.element = (WebElement) element;
             }
         }
-        return this.element;
+        if(elements.size()==0){
+            throw new RuntimeException(String.format("Element %s could not be found",this.by));
+        }
+        return element;
+    }
+
+    public boolean isStale()
+    {
+        try
+        {
+            boolean enabled = element.isEnabled();
+            return false;
+        }
+        catch (Exception e)
+        {
+            return true;
+        }
     }
 
     public Point getLocation() {
@@ -111,10 +130,13 @@ public class Element{
     }
 
     public boolean isPresent() {
-        if(driver.findElements(by).size()>0)
-            return true;
-        else
+        try{
+            return getElement().isEnabled();
+        }catch(Exception e){
             return false;
+        }
+
+
     }
 
 
@@ -134,8 +156,8 @@ public class Element{
         getElement().submit();
     }
 
+
     public void sendKeys(String text) {
-        waitUntilVisible();
         getElement().sendKeys(text);
     }
 

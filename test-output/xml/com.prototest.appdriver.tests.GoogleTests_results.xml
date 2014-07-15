@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="appdriver-parent"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="4.786">
+  <properties />
+  
+  
+            <testcase name="TestGoogle" time="4.786" classname="com.prototest.appdriver.tests.GoogleTests" />
+      
+</testsuite>

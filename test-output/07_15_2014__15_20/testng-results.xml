@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:46 989] Starting test TestGoogle</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:46 993] Running setUp before test</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:50 928] launchBrowser(): Using browser = Firefox</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:50 991] Navigating to http://www.google.com/</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 478] Finding Element By.name: q</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 751] Typing into Element [[FirefoxDriver: firefox on XP (693ddeac-dff5-4f31-ac85-7356077e3ef9)] -> name: q]</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 772] Typing into Element [[FirefoxDriver: firefox on XP (693ddeac-dff5-4f31-ac85-7356077e3ef9)] -> name: q]</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 890] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:53 949] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:54 548] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:54 969] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:55 433] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [07-15-2014 03:20:55 888] Clicking Element [[FirefoxDriver: firefox on XP (693ddeac-dff5-4f31-ac85-7356077e3ef9)] -> partial link text: Home « ProtoTest]</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:55 968] Ending test TestGoogle</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:55 968] Running tearDown() after test</div>]]>
+    </line>
+  </reporter-output>
+  <suite name="Custom suite" duration-ms="9370" started-at="2014-07-15T21:20:46Z" finished-at="2014-07-15T21:20:56Z">
+    <groups>
+    </groups>
+    <test name="appdriver-parent" duration-ms="9370" started-at="2014-07-15T21:20:46Z" finished-at="2014-07-15T21:20:56Z">
+      <class name="com.prototest.appdriver.tests.GoogleTests">
+        <test-method status="PASS" signature="browserTestBeforeMethod(java.lang.reflect.Method)[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@1134affc]" name="browserTestBeforeMethod" is-config="true" duration-ms="4074" started-at="2014-07-15T15:20:46Z" finished-at="2014-07-15T15:20:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.prototest.appdriver.tests.GoogleTests.TestGoogle()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:46 989] Starting test TestGoogle</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:46 993] Running setUp before test</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:50 928] launchBrowser(): Using browser = Firefox</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- browserTestBeforeMethod -->
+        <test-method status="PASS" signature="TestGoogle()[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@1134affc]" name="TestGoogle" duration-ms="4986" started-at="2014-07-15T15:20:50Z" finished-at="2014-07-15T15:20:55Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:50 991] Navigating to http://www.google.com/</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 478] Finding Element By.name: q</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 751] Typing into Element [[FirefoxDriver: firefox on XP (693ddeac-dff5-4f31-ac85-7356077e3ef9)] -> name: q]</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 772] Typing into Element [[FirefoxDriver: firefox on XP (693ddeac-dff5-4f31-ac85-7356077e3ef9)] -> name: q]</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:52 890] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:53 949] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:54 548] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:54 969] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:55 433] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [07-15-2014 03:20:55 888] Clicking Element [[FirefoxDriver: firefox on XP (693ddeac-dff5-4f31-ac85-7356077e3ef9)] -> partial link text: Home « ProtoTest]</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestGoogle -->
+        <test-method status="PASS" signature="browserTestAfterMethod(java.lang.reflect.Method)[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@1134affc]" name="browserTestAfterMethod" is-config="true" duration-ms="297" started-at="2014-07-15T15:20:55Z" finished-at="2014-07-15T15:20:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.prototest.appdriver.tests.GoogleTests.TestGoogle()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:55 968] Ending test TestGoogle</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [07-15-2014 03:20:55 968] Running tearDown() after test</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- browserTestAfterMethod -->
+      </class> <!-- com.prototest.appdriver.tests.GoogleTests -->
+    </test> <!-- appdriver-parent -->
+  </suite> <!-- Custom suite -->
+</testng-results>

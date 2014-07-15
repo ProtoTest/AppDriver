@@ -18,7 +18,7 @@ public class Verification {
         this.timeout=timeout;
     }
 
-    protected void ValidateCondition(){
+    protected void validateCondition(){
         if(!this.condition)
         {
             System.out.println("Verification Failed : " + this.message);
@@ -26,7 +26,7 @@ public class Verification {
 
     }
 
-    protected boolean WaitForElement(){
+    protected boolean waitForElement(){
         for(int i=0;i<this.timeout;i++){
             if(element.isPresent())
                 return true;
@@ -41,34 +41,34 @@ public class Verification {
         return false;
     }
 
-    public Verification ContainsText(String text)
+    public Verification containsText(String text)
     {
-        if(WaitForElement()){
+        if(waitForElement()){
             this.condition = this.element.getText().contains(text);
             this.message = String.format("Element (%s) does%s contain text %s",element.getBy().toString(), conditional, text);
         }
 
-        ValidateCondition();
+        validateCondition();
         return this;
     }
 
-    public Verification IsVisible()
+    public Verification visible()
     {
-        if(WaitForElement()){
+        if(waitForElement()){
             this.condition = this.element.isDisplayed();
             this.message = String.format("Element (%s) is%s visible ",element.getBy().toString(), conditional);
         }
-        ValidateCondition();
+        validateCondition();
         return this;
     }
 
-    public Verification IsPresent()
+    public Verification present()
     {
-        if(WaitForElement()){
+        if(waitForElement()){
             this.condition = this.element.isPresent();
             this.message = String.format("Element (%s) is%s present",element.getBy().toString(), conditional);
         }
-        ValidateCondition();
+        validateCondition();
         return this;
     }
 
@@ -81,7 +81,7 @@ public class Verification {
             this.conditional = "";
         }
         @Override
-        public void ValidateCondition(){
+        public void validateCondition(){
             if(this.condition)
             {
                 System.out.println("Verification Failed : " + this.message);
