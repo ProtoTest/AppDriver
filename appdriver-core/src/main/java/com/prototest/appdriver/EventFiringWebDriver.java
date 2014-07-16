@@ -328,7 +328,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
                             try {
                                 return method.invoke(element, args);
                             } catch (InvocationTargetException e) {
-                                dispatcher.onException(e.getTargetException(), driver.driver);
+                                dispatcher.onException(e.getTargetException(), driver);
                                 throw e.getTargetException();
                             }
                         }
@@ -338,9 +338,9 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
         }
 
         public void click() {
-            dispatcher.beforeClickOn(element, driver.driver);
+            dispatcher.beforeClickOn(element, driver);
             element.click();
-            dispatcher.afterClickOn(element, driver.driver);
+            dispatcher.afterClickOn(element, driver);
         }
 
         public void submit() {
@@ -348,15 +348,15 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
         }
 
         public void sendKeys(CharSequence... keysToSend) {
-            dispatcher.beforeChangeValueOf(element, driver.driver);
+            dispatcher.beforeChangeValueOf(element, driver);
             element.sendKeys(keysToSend);
-            dispatcher.afterChangeValueOf(element, driver.driver);
+            dispatcher.afterChangeValueOf(element, driver);
         }
 
         public void clear() {
-            dispatcher.beforeChangeValueOf(element, driver.driver);
+            dispatcher.beforeChangeValueOf(element, driver);
             element.clear();
-            dispatcher.afterChangeValueOf(element, driver.driver);
+            dispatcher.afterChangeValueOf(element, driver);
         }
 
         public String getTagName() {
@@ -396,16 +396,16 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
         }
 
         public org.openqa.selenium.WebElement findElement(By by) {
-            dispatcher.beforeFindBy(by, element, driver.driver);
+            dispatcher.beforeFindBy(by, element, driver);
             org.openqa.selenium.WebElement temp = element.findElement(by);
-            dispatcher.afterFindBy(by, element, driver.driver);
+            dispatcher.afterFindBy(by, element, driver);
             return createWebElement(temp);
         }
 
         public List<org.openqa.selenium.WebElement> findElements(By by) {
-            dispatcher.beforeFindBy(by, element, driver.driver);
+            dispatcher.beforeFindBy(by, element, driver);
             List<org.openqa.selenium.WebElement> temp = element.findElements(by);
-            dispatcher.afterFindBy(by, element, driver.driver);
+            dispatcher.afterFindBy(by, element, driver);
             List<org.openqa.selenium.WebElement> result = new ArrayList<org.openqa.selenium.WebElement>(temp.size());
             for (org.openqa.selenium.WebElement element : temp) {
                 result.add(createWebElement(element));
@@ -442,7 +442,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
         }
 
         public WebDriver getWrappedDriver() {
-            return driver.driver;
+            return driver;
         }
 
         public Coordinates getCoordinates() {

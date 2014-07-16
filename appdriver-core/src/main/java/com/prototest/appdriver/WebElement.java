@@ -2,13 +2,14 @@ package com.prototest.appdriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.internal.WrapsDriver;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-interface WebElement extends org.openqa.selenium.WebElement {
-    WebDriver driver= BrowserTestSuite.driver;
+public interface WebElement extends org.openqa.selenium.WebElement, WrapsDriver {
+
     default public void highlight(){
         BrowserTestSuite.driver.highlight(this);
     }
@@ -45,12 +46,12 @@ interface WebElement extends org.openqa.selenium.WebElement {
 
     default public void clearChecked()
     {
-        driver.executeJavaScript("arguments[0].checked=false;", this);
+        BrowserTestSuite.driver.executeJavaScript("arguments[0].checked=false;", this);
     }
 
     default public void mouseOver()
     {
-        Actions action = new Actions(driver.driver).moveToElement(this);
+        Actions action = new Actions(BrowserTestSuite.driver.driver).moveToElement(this);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -59,8 +60,8 @@ interface WebElement extends org.openqa.selenium.WebElement {
         action.build().perform();
     }
 
-    default public void sendKeys(CharSequence... chars){
-        sendKeys(chars.toString());
+    default public String getValue(){
+        return getAttribute("value");
     }
 
 //    default public WebElement WaitForPresent(WebElement element, By by)

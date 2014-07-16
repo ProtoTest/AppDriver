@@ -23,7 +23,7 @@ public class AppiumTestSuite extends TestSuite {
     }
 
     public void launchApp() {
-        driver = new WebDriverLauncher().launchAppDriver();
+        driver = new BrowserManager().launchAppDriver();
     }
 
     public void quitBrowser() {

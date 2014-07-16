@@ -16,4 +16,10 @@ public class TestContainer {
         this.logger = new Logger();
         this.name = name;
     }
+    public TestContainer(String name,WebDriver driver){
+        this.driver = driver;
+        this.config = new Config();
+        this.logger = new Logger();
+        this.name = name;
+    }
 }

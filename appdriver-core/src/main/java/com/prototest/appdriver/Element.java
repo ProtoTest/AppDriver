@@ -1,6 +1,7 @@
 
 package com.prototest.appdriver;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,15 +14,26 @@ public class Element implements WebElement{
         private WebDriver driver;
         private String name;
         private WebElement element;
-        public Verification Verify;
 
         public Element(String name, By by) {
             this.name = name;
             this.by = by;
-            this.Verify = new Verification();
-            this.driver = BrowserTestSuite.getDriver();
+            this.driver = BrowserTestSuite.driver;
         }
 
+    public Element(By by) {
+        this.name = "Element";
+        this.by = by;
+        this.driver = BrowserTestSuite.driver;
+    }
+
+    public Verification verify(){
+        return new Verification(this,Config.Settings.RuntimeSettings.elementTimeoutSec);
+    }
+    public WaitUntil waitUntil(){
+
+        return new WaitUntil(this,Config.Settings.RuntimeSettings.elementTimeoutSec);
+    }
 
 
     public Verification verify(int timeoutSec){
@@ -156,6 +168,11 @@ public class Element implements WebElement{
         getElement().submit();
     }
 
+    @Override
+    public void sendKeys(CharSequence... keysToSend) {
+        getElement().sendKeys(keysToSend);
+    }
+
 
     public void sendKeys(String text) {
         getElement().sendKeys(text);
@@ -165,5 +182,10 @@ public class Element implements WebElement{
         WebDriverWait wait = new WebDriverWait((org.openqa.selenium.WebDriver)driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return this;
+    }
+
+    @Override
+    public org.openqa.selenium.WebDriver getWrappedDriver() {
+        return driver.driver;
     }
 }

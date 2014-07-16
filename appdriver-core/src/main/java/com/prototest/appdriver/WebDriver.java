@@ -1,10 +1,17 @@
 package com.prototest.appdriver;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class WebDriver{
@@ -476,6 +483,17 @@ public class WebDriver{
     {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return js.executeScript(script, params);
+    }
+
+    public File getScreenshot(){
+        String dir = "test-output\\screenshots\\";
+        File report = new File(dir);
+        report.mkdir();
+
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File newScreenshot = new File(dir + screenshot.getName());
+        screenshot.renameTo(newScreenshot);
+        return newScreenshot;
     }
 //
 //    public static void JavaWindowScroll(this IWebDriver driver, int xCord, int yCord)

@@ -77,7 +77,7 @@ public final class Config {
     public static class Settings {
 
         public static class RuntimeSettings {
-            public static ArrayList<WebDriverLauncher.Browser> browsers = new ArrayList<WebDriverLauncher.Browser>();
+            public static ArrayList<BrowserManager.Browser> browsers = new ArrayList<BrowserManager.Browser>();
             public static Boolean launchBrowser;
             public static Integer testTimeoutMin;
             public static Integer elementTimeoutSec;
@@ -95,7 +95,7 @@ public final class Config {
                     browsers = getBrowserList();
                     launchBrowser = Config.getConfigValue("launchBrowser", true);
                     testTimeoutMin = Config.getConfigValue("testTimeoutMin", 5);
-                    elementTimeoutSec = Config.getConfigValue("elementTimeoutSec", 20);
+                    elementTimeoutSec = Config.getConfigValue("elementTimeoutSec", 5);
                     pageTimeoutSec = Config.getConfigValue("pageTimeoutSec", 30);
                     environmentURL = Config.getConfigValue("environmentURL", "");
                     degreeOfParallelism = Config.getConfigValue("degreeOfParallelism", 5);
@@ -110,8 +110,8 @@ public final class Config {
                 }
             }
 
-            private static ArrayList<WebDriverLauncher.Browser> getBrowserList() {
-                ArrayList<WebDriverLauncher.Browser> browsers = new ArrayList<WebDriverLauncher.Browser>();
+            private static ArrayList<BrowserManager.Browser> getBrowserList() {
+                ArrayList<BrowserManager.Browser> browsers = new ArrayList<BrowserManager.Browser>();
                 String[] browserConfigList = {};
                 browserConfigList = Config.getConfigValue("browsers", browserConfigList);
                 if(browserConfigList != null) {
@@ -121,7 +121,7 @@ public final class Config {
                             continue;
                         }
 
-                        browsers.add(WebDriverLauncher.Browser.valueOf(browser_str));
+                        browsers.add(BrowserManager.Browser.valueOf(browser_str));
                     }
                 }
 

@@ -20,7 +20,15 @@ public class TimestampedHTMLReporter extends HTMLReporter {
             File outputDirectory = new File(outputDirectoryName, dateFormat.format(now).toString());
             outputDirectory.mkdir();
             outputDirectoryName = outputDirectory.toString();
-      //  }
+            String dir = "test-output\\screenshots\\";
+            File screenshotDir = new File(dir);
+            File newScreenshotDir = new File(outputDirectoryName + "\\images\\");
+            screenshotDir.renameTo(newScreenshotDir);
+            screenshotDir.delete();
+
+            System.out.println("HTMLReport : " + outputDirectoryName + "\\index.html");
+
+              //  }
 
 
         super.generateReport(xmlSuites, suites, outputDirectoryName);    //To change body of overridden methods use File | Settings | File Templates.

@@ -1,6 +1,7 @@
 package com.prototest.appdriver.pageobjects.google;
 
 import com.prototest.appdriver.Element;
+import com.prototest.appdriver.Logger;
 import org.openqa.selenium.By;
 
 public class GoogleResultsPage {
@@ -28,13 +29,15 @@ public class GoogleResultsPage {
 
     public GoogleResultsPage verifyResult(String text)
     {
-        searchResult(text).verify(10).visible();
+        searchResult(text).verify().present();
+        searchResult(text).verify().visible();
         return new GoogleResultsPage();
     }
 
     public GoogleResultsPage verifyResultNotVisible(String text)
     {
-        searchResult(text).verify(10).Not.visible();
+        searchResult(text).verify().not().present();
+        searchResult(text).verify().not().visible();
         return new GoogleResultsPage();
     }
 

@@ -17,72 +17,22 @@ import java.util.Enumeration;
 @Listeners({TimestampedHTMLReporter.class,
         TimestamppedXMLReporter.class,
         org.uncommons.reportng.JUnitXMLReporter.class,
-        VerificationsListener.class})
+        VerificationsListener.class,ScreenshotListener.class})
 public class TestSuite {
-    public static Dictionary<String, TestContainer> tests;
-    static{
-        tests = new Dictionary<String, TestContainer>() {
-            @Override
-            public int size() {
-                return 0;
-            }
 
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public Enumeration<String> keys() {
-                return null;
-            }
-
-            @Override
-            public Enumeration<TestContainer> elements() {
-                return null;
-            }
-
-            @Override
-            public TestContainer get(Object key) {
-                return null;
-            }
-
-            @Override
-            public TestContainer put(String key, TestContainer value) {
-                return null;
-            }
-
-            @Override
-            public TestContainer remove(Object key) {
-                return null;
-            }
-        };
-    }
-
-    public TestContainer getTest(String name){
-        return tests.get(name);
-    }
-
-    public void addTest(String name, TestContainer container){
-        tests.put(name,container);
-    }
-
-    public void deleteTest(String name){
-        tests.remove(name);
-    }
-
+    private static final ThreadLocal<TestContainer> tests = new ThreadLocal<TestContainer>();
 
     @BeforeMethod
     void testSuiteBeforeMethod(Method method){
         Logger.info("Starting test " + method.getName());
         Verifications.clearVerifications();
-        addTest(method.getName(),new TestContainer(method.getName()));
+        tests.set(new TestContainer(method.getName()));
     }
 
     @AfterMethod
     void testSuiteAfterMethod(Method method){
         Logger.info("Ending test " + method.getName());
-        deleteTest(method.getName());
+        tests.remove();
     }
 
     @BeforeTest

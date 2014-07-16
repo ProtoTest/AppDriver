@@ -1,7 +1,8 @@
 package com.prototest.appdriver;
 
-import junit.framework.Assert;
+import org.testng.Assert;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -70,10 +71,9 @@ public class Verifications {
             verifications.add(new Verification(message,true));
         }
         else{
-            //String filePath = EggplantTestBase.driver.getScreenshot();
-            Logger.error(String.format("Verification Failed : %S", message));
-            verifications.add(new Verification(message, "", false));
+            Logger.error(String.format("Verification Failed : %s", message));
             Logger.screenshot();
+            verifications.add(new Verification(message, "", false));
         }
     }
 
@@ -86,8 +86,7 @@ public class Verifications {
         }
         else{
             Logger.error(String.format("Verification Failed : %S", message));
-            Logger.screenshot();
-
+            Logger.image(new File(filePath));
         }
         verifications.add(new Verification(message,filePath,false));
 
