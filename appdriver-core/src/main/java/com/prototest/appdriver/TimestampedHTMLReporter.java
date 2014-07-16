@@ -26,7 +26,7 @@ public class TimestampedHTMLReporter extends HTMLReporter {
             screenshotDir.renameTo(newScreenshotDir);
             screenshotDir.delete();
 
-            System.out.println("HTMLReport : " + outputDirectoryName + "\\index.html");
+            System.out.println("HTMLReport : " + new File(outputDirectoryName).getAbsolutePath() + "\\html\\index.html");
 
               //  }
 

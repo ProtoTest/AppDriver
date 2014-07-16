@@ -16,8 +16,6 @@ public class GoogleTests extends BrowserTestSuite {
                 openGoogle().
                 searchFor("ProtoTest").
                 verifyResult("Home « ProtoTest").
-                verifyResult("zxdfsdf").
-                verifyResultNotVisible("Home « ProtoTest").
                 verifyResultNotVisible("asdfasdf").
                 goToResult("Home « ProtoTest");
     }

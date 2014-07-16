@@ -7,18 +7,26 @@ import org.openqa.selenium.By;
 
 public class GoogleHomePage extends SuperPage {
 
-    Element searchField = new Element("SearchField", By.name("q"));
-    //Element googleLogo = new Element("GoogleLogo", By.id("hplogo"));
-    Element searchButton = new Element("SearchButton", By.name("btnK"));
-    Element feelingLuckyButton = new Element("ImFeelingLuckyButton", By.name("btnI"));
-    Element signInButton = new Element("SignInButon", By.className("gbit"));
-    Element gmailbutton = new Element("GmailButton", By.className("gbts"));
+    static Element searchField = new Element("SearchField", By.name("q"));
+    static Element googleLogo = new Element("GoogleLogo", By.id("hplogo"));
+    static Element searchButton = new Element("SearchButton", By.name("btnK"));
+    static Element feelingLuckyButton = new Element("ImFeelingLuckyButton", By.name("btnI"));
+    static Element signInButton = new Element("SignInButon", By.className("gbit"));
+    static Element gmailbutton = new Element("GmailButton", By.className("gbts"));
 
     public static GoogleHomePage openGoogle()
     {
 
         BrowserTestSuite.getDriver().navigate().to("http://www.google.com/");
         return new GoogleHomePage();
+    }
+
+    protected void waitForElements(){
+        searchField.verify().visible();
+        searchButton.verify().visible();
+        feelingLuckyButton.verify().visible();
+        signInButton.verify().visible();
+        gmailbutton.verify().visible();
     }
 
     public GoogleResultsPage searchFor(String text)

@@ -55,7 +55,7 @@ public class BrowserTestSuite extends TestSuite {
 
     public void launchBrowser() {
         try{
-            driver = new BrowserManager().launchBrowser(BrowserManager.Browser.IE);
+            driver = new BrowserManager().launchBrowser(BrowserManager.Browser.Chrome);
         }
         catch(Exception e){
            throw new RuntimeException(e.getMessage());
