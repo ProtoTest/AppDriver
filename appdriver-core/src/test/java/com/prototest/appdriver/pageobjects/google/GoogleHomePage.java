@@ -1,27 +1,26 @@
 package com.prototest.appdriver.pageobjects.google;
 
-import com.prototest.appdriver.BrowserTestSuite;
 import com.prototest.appdriver.Element;
 import com.prototest.appdriver.SuperPage;
 import org.openqa.selenium.By;
 
 public class GoogleHomePage extends SuperPage {
 
-    static Element searchField = new Element("SearchField", By.name("q"));
-    static Element googleLogo = new Element("GoogleLogo", By.id("hplogo"));
-    static Element searchButton = new Element("SearchButton", By.name("btnK"));
-    static Element feelingLuckyButton = new Element("ImFeelingLuckyButton", By.name("btnI"));
-    static Element signInButton = new Element("SignInButon", By.className("gbit"));
-    static Element gmailbutton = new Element("GmailButton", By.className("gbts"));
+    Element searchField = new Element("SearchField", By.id("gbqfq"));
+    Element googleLogo = new Element("GoogleLogo", By.id("hplogo"));
+    Element searchButton = new Element("SearchButton", By.name("btnK"));
+    Element feelingLuckyButton = new Element("ImFeelingLuckyButton", By.name("btnI"));
+    Element signInButton = new Element("SignInButon", By.id("gb_70"));
+    Element gmailbutton = new Element("GmailButton", By.className("gb_c"));
 
-    public static GoogleHomePage openGoogle()
-    {
-
-        BrowserTestSuite.getDriver().navigate().to("http://www.google.com/");
-        return new GoogleHomePage();
+    @Override
+    public void init() {
+        getDriver().navigate().to("http://www.google.com/");
+        //return new GoogleHomePage();
     }
 
-    protected void waitForElements(){
+    @Override
+    protected void waitForElements() {
         searchField.verify().visible();
         searchButton.verify().visible();
         feelingLuckyButton.verify().visible();
@@ -29,11 +28,10 @@ public class GoogleHomePage extends SuperPage {
         gmailbutton.verify().visible();
     }
 
-    public GoogleResultsPage searchFor(String text)
-    {
+    public GoogleResultsPage searchFor(String text) {
         searchField.setText(text);
         searchField.submit();
-        return new GoogleResultsPage();
+        return buildPage(GoogleResultsPage.class);
     }
 
 }

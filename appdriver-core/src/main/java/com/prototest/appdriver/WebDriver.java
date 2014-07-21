@@ -1,5 +1,6 @@
 package com.prototest.appdriver;
 
+import com.google.inject.Inject;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,7 +15,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class WebDriver{
+public class WebDriver {
+    @Inject
+    Config.Settings.RuntimeSettings config;
+    @Inject
+    Logger logger;
 
     public EventFiringWebDriver driver;
     public WebDriver(org.openqa.selenium.WebDriver driver){
@@ -26,7 +31,7 @@ public class WebDriver{
         driver.register(new WebDriverEventListener() {
             @Override
             public void beforeNavigateTo(String s, org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Navigating to %s",s));
+                logger.debug(String.format("Navigating to %s",s));
             }
 
             @Override
@@ -36,7 +41,7 @@ public class WebDriver{
 
             @Override
             public void beforeNavigateBack(org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Navigating back"));
+                logger.debug(String.format("Navigating back"));
             }
 
             @Override
@@ -46,7 +51,7 @@ public class WebDriver{
 
             @Override
             public void beforeNavigateForward(org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Navigating Forward"));
+                logger.debug(String.format("Navigating Forward"));
             }
 
             @Override
@@ -56,7 +61,7 @@ public class WebDriver{
 
             @Override
             public void beforeFindBy(By by, org.openqa.selenium.WebElement webElement, org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Finding Element %s",by.toString()));
+                logger.debug(String.format("Finding Element %s",by.toString()));
             }
 
             @Override
@@ -66,7 +71,7 @@ public class WebDriver{
 
             @Override
             public void beforeClickOn(org.openqa.selenium.WebElement webElement, org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Clicking Element %s",webElement));
+                logger.debug(String.format("Clicking Element %s",webElement));
             }
 
             @Override
@@ -76,7 +81,7 @@ public class WebDriver{
 
             @Override
             public void beforeChangeValueOf(org.openqa.selenium.WebElement webElement, org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Typing into Element %s",webElement));
+                logger.debug(String.format("Typing into Element %s",webElement));
             }
 
             @Override
@@ -234,7 +239,7 @@ public class WebDriver{
         }
         catch (Exception e)
         {
-            Logger.error(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 
@@ -261,7 +266,7 @@ public class WebDriver{
 
     public WebElement WaitForPresent(WebElement element, By by)
     {
-        Integer timeout = Config.Settings.RuntimeSettings.elementTimeoutSec;
+        Integer timeout = config.elementTimeoutSec;
         Calendar then = Calendar.getInstance();
         then.add(Calendar.SECOND,timeout);
         for (Calendar now = Calendar.getInstance(); now.before(then); now = Calendar.getInstance())

@@ -2,9 +2,10 @@ package com.prototest.appdriver.pageobjects.google;
 
 import com.prototest.appdriver.Element;
 import com.prototest.appdriver.Logger;
+import com.prototest.appdriver.SuperPage;
 import org.openqa.selenium.By;
 
-public class GoogleResultsPage {
+public class GoogleResultsPage extends SuperPage {
     //Element googleLogo = new Element("GoogleLogo", By.className("qbqlca"));
     Element searchField = new Element("SearchField", By.name("q"));
     Element searchButton = new Element("SearchButton", By.name("btnK"));
@@ -24,26 +25,36 @@ public class GoogleResultsPage {
     {
         searchField.sendKeys(text);
         searchField.submit();
-        return new GoogleResultsPage();
+        return buildPage(GoogleResultsPage.class);
     }
 
     public GoogleResultsPage verifyResult(String text)
     {
         searchResult(text).verify().present();
         searchResult(text).verify().visible();
-        return new GoogleResultsPage();
+        return buildPage(GoogleResultsPage.class);
     }
 
     public GoogleResultsPage verifyResultNotVisible(String text)
     {
         searchResult(text).verify().not().present();
         searchResult(text).verify().not().visible();
-        return new GoogleResultsPage();
+        return buildPage(GoogleResultsPage.class);
     }
 
     public SearchResultPage goToResult(String text)
     {
         searchResult(text).click();
-        return new SearchResultPage();
+        return buildPage(SearchResultPage.class);
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void waitForElements() {
+
     }
 }

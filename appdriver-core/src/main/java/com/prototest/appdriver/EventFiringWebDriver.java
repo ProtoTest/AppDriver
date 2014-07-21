@@ -311,7 +311,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
         }
     }
 
-    private class EventFiringWebElement implements WebElement, WrapsElement, WrapsDriver, Locatable {
+    private class EventFiringWebElement extends WebElement implements WrapsElement, WrapsDriver, Locatable {
 
         private final org.openqa.selenium.WebElement element;
         private final org.openqa.selenium.WebElement underlyingElement;

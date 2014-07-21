@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="GoogleTEst" verbose="1"   >
+    <test name="GoogleTest" >
+        <!--<parameter name="hostName" value="10.10.1.128"/>-->
+        <!--<parameter name="hostPort" value="5901"/>-->
+        <classes>
+            <class name="com.prototest.appdriver.tests.GoogleTests"/>
+            <class name="com.prototest.appdriver.tests.GoogleTests"/>
+
+        </classes>
+    </test>
+</suite>

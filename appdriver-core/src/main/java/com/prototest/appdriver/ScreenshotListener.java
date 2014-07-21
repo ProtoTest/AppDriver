@@ -1,23 +1,26 @@
 package com.prototest.appdriver;
+import com.google.inject.Inject;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-public class ScreenshotListener extends TestListenerAdapter{
+public class ScreenshotListener extends TestListenerAdapter {
+    @Inject
+    Logger logger;
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        Logger.error("Test Failed, taking a screenshot");
-        Logger.screenshot();
+        logger.error("Test Failed, taking a screenshot");
+        logger.screenshot();
     }
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        Logger.info("Test was skipped ; " + tr.getTestName());
+        logger.info("Test was skipped ; " + tr.getTestName());
     }
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        Logger.info("Test passed ; " + tr.getTestName());
+        logger.info("Test passed ; " + tr.getTestName());
     }
 
 

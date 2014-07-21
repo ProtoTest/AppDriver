@@ -1,67 +1,68 @@
 package com.prototest.appdriver;
 
-import junit.framework.Assert;
+import com.google.inject.Inject;
 import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
+@Guice(modules = {BrowserTestsModule.class})
 public class BrowserTestSuite extends TestSuite {
-//    @DataProvider
-//    public static Iterator<Object[]> fileDataProvider () {
-//        List<Object[]> dataToBeReturned = new ArrayList<Object[]>();
-////
-////        for(int i=1; i<=10 ;i++){
-////
-////        }
-//        dataToBeReturned.add(new Object[] { "Firefox" } );
-//        dataToBeReturned.add(new Object[] { "Chrome" } );
-//        dataToBeReturned.add(new Object[] { "IE" } );
-//        //return the iterator - testng will initialize the test class and calls the
-//        //test method with each of the content of this iterator.
-//        return dataToBeReturned.iterator();
-//
-//    }
-    private  String browser = null;
-    //Constructor: test data in this case String line can be utilized by all the @Test methods.
-//    @Factory(dataProvider="fileDataProvider")
-//    public BrowserTestSuite(String browser) {
-//        this.browser = browser;
-//         System.out.println("In factory " + browser);
-//
-//    }
+    public Config.Settings.RuntimeSettings getConfig() {
+        return config;
+    }
 
-    public static WebDriver driver;
+    @Inject
+    Config.Settings.RuntimeSettings config;
+
+    @Inject
+    Logger logger;
+
+    @Inject
+    PageObjectFactory pageObjectFactory;
+
+    @Inject
+    WebDriverFactory driverFactory;
+
+    @BeforeTest
+    @Parameters({"browser", "hostName", "hostPort"})
+    void testSuiteBeforeTest(@Optional String browser, @Optional String hostName,
+                             @Optional Integer hostPort) {
+        super.testSuiteBeforeTest();
+
+        createReportDirectory();
+    }
 
     @AfterMethod
     public void browserTestAfterMethod(Method method) throws Exception {
         super.testSuiteAfterMethod(method);
-        Logger.info("Running tearDown() after test");
+        logger.info("Running tearDown() after test");
         quitBrowser();
     }
 
     @BeforeMethod
-    public void browserTestBeforeMethod(Method method) throws Exception {
+    @Parameters({"browser", "hostName", "hostPort"})
+    public void browserTestBeforeMethod(Method method, @Optional String browser, @Optional String hostName,
+                                        @Optional Integer hostPort) throws Exception {
         super.testSuiteBeforeMethod(method);
-        Logger.info("Running setUp before test");
-        launchBrowser();
+        logger.info("Running setUp before test");
+        driverFactory.build(config.browser);
     }
 
-    public static WebDriver getDriver() {
-        return driver;
+    public WebDriver getDriver() {
+        return driverFactory.get();
     }
 
-    public void launchBrowser() {
-        try{
-            driver = new BrowserManager().launchBrowser(BrowserManager.Browser.Chrome);
-        }
-        catch(Exception e){
-           throw new RuntimeException(e.getMessage());
-        }
-}
     public void quitBrowser() {
-        driver.quit();
+        getDriver().quit();
+        deleteDriver();
+    }
+
+    private void deleteDriver() {
+        driverFactory.deleteDriver();
+    }
+
+
+    protected <P extends SuperPage> P buildPage(Class<P> pageObjectClazz) {
+        return pageObjectFactory.of(pageObjectClazz);
     }
 }
