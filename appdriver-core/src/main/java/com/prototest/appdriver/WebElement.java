@@ -1,25 +1,41 @@
 package com.prototest.appdriver;
 
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.WrapsDriver;
 
-import java.util.Calendar;
-import java.util.List;
-import java.util.NoSuchElementException;
 
-public interface WebElement extends org.openqa.selenium.WebElement, WrapsDriver {
+public abstract class WebElement implements org.openqa.selenium.WebElement, WrapsDriver {
+    @Inject
+    static Injector injector;
+    @Inject
+    private Config.Settings.RuntimeSettings config;
+    @Inject
+    private WebDriverFactory driverFactory;
 
-    default public void highlight(){
-        BrowserTestSuite.driver.highlight(this);
+    protected WebElement() {
+        injector.injectMembers(this);
     }
 
-    default public void setText(String value) {
+    protected Config.Settings.RuntimeSettings getConfig() {
+        return config;
+    }
+    
+    protected WebDriver getDriver() {
+        return driverFactory.get();
+    }
+     public void highlight(){
+        getDriver().highlight(this);
+    }
+
+     public void setText(String value) {
         clear();
         sendKeys(value);
     }
 
-    default public String getHtml(int length)
+     public String getHtml(int length)
     {
         try
         {
@@ -44,14 +60,14 @@ public interface WebElement extends org.openqa.selenium.WebElement, WrapsDriver 
         return (WebElement) element.findElement(By.xpath(".."));
     }
 
-    default public void clearChecked()
+     public void clearChecked()
     {
-        BrowserTestSuite.driver.executeJavaScript("arguments[0].checked=false;", this);
+        getDriver().executeJavaScript("arguments[0].checked=false;", this);
     }
 
-    default public void mouseOver()
+     public void mouseOver()
     {
-        Actions action = new Actions(BrowserTestSuite.driver.driver).moveToElement(this);
+        Actions action = new Actions(getDriver().driver).moveToElement(this);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -60,11 +76,11 @@ public interface WebElement extends org.openqa.selenium.WebElement, WrapsDriver 
         action.build().perform();
     }
 
-    default public String getValue(){
+     public String getValue(){
         return getAttribute("value");
     }
 
-//    default public WebElement WaitForPresent(WebElement element, By by)
+//     public WebElement WaitForPresent(WebElement element, By by)
 //    {
 //        Integer timeout = Config.Settings.RuntimeSettings.elementTimeoutSec;
 //        Calendar then = Calendar.getInstance();

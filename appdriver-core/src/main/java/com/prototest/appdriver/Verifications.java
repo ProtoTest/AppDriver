@@ -1,5 +1,6 @@
 package com.prototest.appdriver;
 
+import com.google.inject.Inject;
 import org.testng.Assert;
 
 import java.io.File;
@@ -11,6 +12,9 @@ import java.util.List;
  * A list of all validations is kept, and at the end of the test the VerificationsListener will inject it into the test and validate all validations passed.
  */
 public class Verifications {
+    @Inject
+    private static Logger logger;
+
     static class Verification{
 
         /**
@@ -67,12 +71,12 @@ public class Verifications {
      */
     public static void addVerification(String message,boolean passed){
         if(passed){
-            Logger.debug(String.format("Verification Passed : %s", message));
+            logger.debug(String.format("Verification Passed : %s", message));
             verifications.add(new Verification(message,true));
         }
         else{
-            Logger.error(String.format("Verification Failed : %s", message));
-            Logger.screenshot();
+            logger.error(String.format("Verification Failed : %s", message));
+            logger.screenshot();
             verifications.add(new Verification(message, "", false));
         }
     }
@@ -82,11 +86,11 @@ public class Verifications {
      */
     public static void addVerification(String message, String filePath, boolean passed){
         if(passed){
-            Logger.debug(String.format("Verification Passed : %S", message));
+            logger.debug(String.format("Verification Passed : %S", message));
         }
         else{
-            Logger.error(String.format("Verification Failed : %S", message));
-            Logger.image(new File(filePath));
+            logger.error(String.format("Verification Failed : %S", message));
+            logger.image(new File(filePath));
         }
         verifications.add(new Verification(message,filePath,false));
 

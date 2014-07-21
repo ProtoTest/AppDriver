@@ -1,5 +1,7 @@
 package com.prototest.appdriver;
 
+import com.google.inject.Inject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,10 +9,32 @@ import java.util.List;
  * Created by Brian on 7/15/2014.
  */
 public abstract class SuperPage {
-    public SuperPage() {
-        waitForElements();
+
+    @Inject
+    private WebDriverFactory driverFactory;
+
+    @Inject
+    private Config.Settings.RuntimeSettings config;
+
+    @Inject
+    private PageObjectFactory pageObjectFactory;
+
+
+    abstract protected void init();
+    /**
+     * Verifies elements on the page are present. The default implementation does nothing.
+     */
+    abstract protected void waitForElements();
+
+    protected WebDriver getDriver() {
+        return driverFactory.get();
     }
 
+    protected Config.Settings.RuntimeSettings getConfig() {
+        return config;
+    }
 
-    protected abstract void waitForElements();
+    protected <P extends SuperPage> P buildPage(Class<P> pageObjectClazz) {
+        return pageObjectFactory.of(pageObjectClazz);
+    }
 }

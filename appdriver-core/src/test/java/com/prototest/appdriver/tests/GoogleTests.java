@@ -12,8 +12,8 @@ public class GoogleTests extends BrowserTestSuite {
     @Test
     public void TestGoogle() {
 
-        GoogleHomePage.
-                openGoogle().
+        new GoogleHomePage();
+        buildPage(GoogleHomePage.class).
                 searchFor("ProtoTest").
                 verifyResult("Home « ProtoTest").
                 verifyResultNotVisible("asdfasdf").
