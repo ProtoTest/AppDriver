@@ -1,22 +1,22 @@
 package com.prototest.appdriver.pageobjects.google;
 
-import com.prototest.appdriver.BrowserTestSuite;
-import com.prototest.appdriver.Element;
+import com.prototest.appdriver.Elements.UIElement;
+import com.prototest.appdriver.TestSuite;
 import org.openqa.selenium.By;
 
 public class GoogleHomePage {
 
-    Element searchField = new Element("SearchField", By.name("q"));
+    UIElement searchField = new UIElement("SearchField", By.name("q"));
     //Element googleLogo = new Element("GoogleLogo", By.id("hplogo"));
-    Element searchButton = new Element("SearchButton", By.name("btnK"));
-    Element feelingLuckyButton = new Element("ImFeelingLuckyButton", By.name("btnI"));
-    Element signInButton = new Element("SignInButon", By.className("gbit"));
-    Element gmailbutton = new Element("GmailButton", By.className("gbts"));
+    UIElement searchButton = new UIElement("SearchButton", By.name("btnK"));
+    UIElement feelingLuckyButton = new UIElement("ImFeelingLuckyButton", By.name("btnI"));
+    UIElement signInButton = new UIElement("SignInButon", By.className("gbit"));
+    UIElement gmailbutton = new UIElement("GmailButton", By.className("gbts"));
 
     public static GoogleHomePage OpenGoogle()
     {
 
-        BrowserTestSuite.getDriver().navigate().to("http://www.google.com/");
+        TestSuite.getDriver().navigate().to("http://www.google.com/");
         return new GoogleHomePage();
     }
 

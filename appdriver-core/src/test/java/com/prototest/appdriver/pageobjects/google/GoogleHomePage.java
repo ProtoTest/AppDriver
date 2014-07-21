@@ -1,23 +1,28 @@
 package com.prototest.appdriver.pageobjects.google;
 
-import com.prototest.appdriver.BrowserTestSuite;
-import com.prototest.appdriver.Element;
-import com.prototest.appdriver.SuperPage;
+import com.prototest.appdriver.Elements.UIElement;
+import com.prototest.appdriver.TestSuite;
 import org.openqa.selenium.By;
 
-public class GoogleHomePage extends SuperPage {
+public class GoogleHomePage {
 
-    static Element searchField = new Element("SearchField", By.name("q"));
-    static Element googleLogo = new Element("GoogleLogo", By.id("hplogo"));
-    static Element searchButton = new Element("SearchButton", By.name("btnK"));
-    static Element feelingLuckyButton = new Element("ImFeelingLuckyButton", By.name("btnI"));
-    static Element signInButton = new Element("SignInButon", By.className("gbit"));
-    static Element gmailbutton = new Element("GmailButton", By.className("gbts"));
+    UIElement searchField = new UIElement("SearchField", By.name("q"));
+    UIElement googleLogo = new UIElement("GoogleLogo", By.id("hplogo"));
+    UIElement searchButton = new UIElement("SearchButton", By.name("btnK"));
+    UIElement feelingLuckyButton = new UIElement("ImFeelingLuckyButton", By.name("btnI"));
+    UIElement signInButton = new UIElement("SignInButon", By.className("gbit"));
+    UIElement gmailbutton = new UIElement("GmailButton", By.className("gbts"));
+
+    public GoogleHomePage(){
+        waitForElements();
+    }
+
+
 
     public static GoogleHomePage openGoogle()
     {
 
-        BrowserTestSuite.getDriver().navigate().to("http://www.google.com/");
+        TestSuite.getDriver().navigate().to("http://www.google.com/");
         return new GoogleHomePage();
     }
 

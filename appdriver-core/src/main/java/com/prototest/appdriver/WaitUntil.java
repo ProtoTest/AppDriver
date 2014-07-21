@@ -1,5 +1,6 @@
 package com.prototest.appdriver;
 
+import com.prototest.appdriver.Elements.Element;
 import org.testng.Assert;
 
 public class WaitUntil extends Verification implements Validation {

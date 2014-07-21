@@ -1,22 +1,20 @@
 package com.prototest.appdriver;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import com.prototest.appdriver.Elements.Element;
+import com.prototest.appdriver.Elements.UIElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.NoSuchElementException;
 
-public class WebDriver{
+public class WebDriver {
 
     public EventFiringWebDriver driver;
+    private By by;
+
     public WebDriver(org.openqa.selenium.WebDriver driver){
         this.driver = new EventFiringWebDriver(driver);
         RegisterEvents();
@@ -26,7 +24,7 @@ public class WebDriver{
         driver.register(new WebDriverEventListener() {
             @Override
             public void beforeNavigateTo(String s, org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Navigating to %s",s));
+                Logger.debug(String.format("Navigating to %s", s));
             }
 
             @Override
@@ -56,7 +54,13 @@ public class WebDriver{
 
             @Override
             public void beforeFindBy(By by, org.openqa.selenium.WebElement webElement, org.openqa.selenium.WebDriver webDriver) {
-                Logger.debug(String.format("Finding Element %s",by.toString()));
+                try{
+                    String name = ((Element)webElement).getName();
+                    Logger.debug(String.format("Finding %s %s",name,by.toString()));
+                }catch(Exception e){
+                    Logger.error(e.getMessage());
+                }
+
             }
 
             @Override
@@ -113,17 +117,18 @@ public class WebDriver{
         return driver.getTitle();
     }
 
-    public List<WebElement> findElements(By by) {
-        List<org.openqa.selenium.WebElement> elements = driver.findElements(by);
-        ArrayList<WebElement> enhancedElements = new ArrayList<WebElement>();
+    public List<Element> findElements(By by) {
+        List<WebElement> elements = driver.findElements(by);
+
+       ArrayList<Element> enhancedElements = new ArrayList<Element>();
         for(org.openqa.selenium.WebElement element : elements){
-            enhancedElements.add((WebElement)(element));
+            enhancedElements.add((Element)element);
         }
         return enhancedElements;
     }
 
-    public WebElement findElement(By by) {
-        return (WebElement)(driver.findElement(by));
+    public Element findElement(By by) {
+        return new UIElement(by,driver.findElement(by));
     }
 
     public String getPageSource() {
@@ -180,10 +185,10 @@ public class WebDriver{
 //        return element.FindElement(by);
 //    }
 //
-    public static WebElement getParent(WebElement element)
+    public static Element getParent(Element element)
     {
 
-        return (WebElement) element.findElement(By.xpath(".."));
+        return (Element) element.findElement(By.xpath(".."));
     }
 
 //    public static string GetHtml(this IWebElement element)
@@ -191,7 +196,7 @@ public class WebDriver{
 //        return element.GetAttribute("outerHTML");
 //    }
 //
-    public static String getHtml(WebElement element, int length)
+    public static String getHtml(Element element, int length)
     {
         try
         {
@@ -259,7 +264,7 @@ public class WebDriver{
         action.build().perform();
     }
 
-    public WebElement WaitForPresent(WebElement element, By by)
+    public Element WaitForPresent(Element element, By by)
     {
         Integer timeout = Config.Settings.RuntimeSettings.elementTimeoutSec;
         Calendar then = Calendar.getInstance();
@@ -268,7 +273,7 @@ public class WebDriver{
         {
             List<org.openqa.selenium.WebElement> eles = element.findElements(by);
             if (eles.size() > 0)
-                return (WebElement)eles.get(0);
+                return (Element)eles.get(0);
         }
         throw new NoSuchElementException(String.format("Element (%s) was not present after %s seconds",
                 by.toString(), timeout));

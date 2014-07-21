@@ -1,13 +1,9 @@
 package com.prototest.appdriver;
 
+
 import org.testng.Reporter;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -71,7 +67,7 @@ public class Logger {
     }
 
     public static void screenshot(String text) {
-        File screenshot = BrowserTestSuite.driver.getScreenshot();
+        File screenshot = TestSuite.getDriver().getScreenshot();
         String path = getLocalPath(screenshot);
         java.util.Date date = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss SSS");
@@ -84,7 +80,7 @@ public class Logger {
     }
 
     public static void screenshot() {
-        File screenshot = BrowserTestSuite.driver.getScreenshot();
+        File screenshot = TestSuite.getDriver().getScreenshot();
         String path = getLocalPath(screenshot);
         Reporter.log(String.format("<img src=\"%s\"/>", path));
     }

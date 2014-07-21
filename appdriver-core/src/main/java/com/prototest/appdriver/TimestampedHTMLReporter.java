@@ -31,6 +31,6 @@ public class TimestampedHTMLReporter extends HTMLReporter {
               //  }
 
 
-        super.generateReport(xmlSuites, suites, outputDirectoryName);    //To change body of overridden methods use File | Settings | File Templates.
+        super.generateReport(xmlSuites, suites, outputDirectoryName);
     }
 }

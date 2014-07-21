@@ -16,18 +16,10 @@ limitations under the License.
 
 package com.prototest.appdriver;
 
+import com.prototest.appdriver.Elements.Element;
+import com.prototest.appdriver.Elements.UIElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Beta;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.internal.Locatable;
 import org.openqa.selenium.internal.WrapsDriver;
@@ -37,6 +29,7 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.events.internal.EventFiringKeyboard;
 import org.openqa.selenium.support.events.internal.EventFiringMouse;
 import org.openqa.selenium.support.events.internal.EventFiringTouch;
+import org.w3c.css.sac.Locator;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -56,10 +49,10 @@ import java.util.concurrent.TimeUnit;
  * A wrapper around an arbitrary {@link WebDriver} instance which supports registering of a
  * {@link WebDriverEventListener}, e&#46;g&#46; for logging purposes.
  */
-public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, TakesScreenshot,
+public class EventFiringWebDriver implements org.openqa.selenium.WebDriver, JavascriptExecutor, TakesScreenshot,
         WrapsDriver, HasInputDevices, HasTouchScreen {
 
-    private final WebDriver driver;
+    private final org.openqa.selenium.WebDriver driver;
 
     private final List<WebDriverEventListener> eventListeners =
             new ArrayList<WebDriverEventListener>();
@@ -81,10 +74,10 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
                     }
             );
 
-    public EventFiringWebDriver(final WebDriver driver) {
+    public EventFiringWebDriver(final org.openqa.selenium.WebDriver driver) {
         Class<?>[] allInterfaces = extractInterfaces(driver);
 
-        this.driver = (WebDriver) Proxy.newProxyInstance(
+        this.driver = (org.openqa.selenium.WebDriver) Proxy.newProxyInstance(
                 WebDriverEventListener.class.getClassLoader(),
                 allInterfaces,
                 new InvocationHandler() {
@@ -142,7 +135,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
     }
 
 
-    public WebDriver getWrappedDriver() {
+    public org.openqa.selenium.WebDriver getWrappedDriver() {
         return driver;
     }
 
@@ -161,12 +154,13 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
     }
 
     public List<org.openqa.selenium.WebElement> findElements(By by) {
-        dispatcher.beforeFindBy(by, null, driver);
+        WebElement newElement = createWebElement(by,null);
+        dispatcher.beforeFindBy(by, newElement, driver);
         List<org.openqa.selenium.WebElement> temp = driver.findElements(by);
 
-        List<org.openqa.selenium.WebElement> result = new ArrayList<org.openqa.selenium.WebElement>(temp.size());
-        for (org.openqa.selenium.WebElement element : temp) {
-            result.add(createWebElement(element));
+        List<WebElement> result = new ArrayList<WebElement>(temp.size());
+        for (WebElement element : temp) {
+            result.add(createWebElement(by,element));
             dispatcher.afterFindBy(by, element, driver);
         }
         return result;
@@ -176,7 +170,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
         dispatcher.beforeFindBy(by, null, driver);
         org.openqa.selenium.WebElement temp = driver.findElement(by);
         dispatcher.afterFindBy(by, temp, driver);
-        return createWebElement(temp);
+        return (createWebElement(by,temp));
     }
 
     public String getPageSource() {
@@ -263,25 +257,27 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
                 "Underlying driver instance does not support taking screenshots");
     }
 
-    public TargetLocator switchTo() {
+    public org.openqa.selenium.WebDriver.TargetLocator switchTo() {
         return new EventFiringTargetLocator(driver.switchTo()) {
             @Override
-            public WebDriver parentFrame() {
+            public org.openqa.selenium.WebDriver parentFrame() {
                 return getWrappedDriver().switchTo().defaultContent();
             }
         };
     }
 
-    public Navigation navigate() {
+    public org.openqa.selenium.WebDriver.Navigation navigate() {
         return new EventFiringNavigation(driver.navigate());
     }
 
-    public Options manage() {
+    public org.openqa.selenium.WebDriver.Options manage() {
         return new EventFiringOptions(driver.manage());
     }
 
-    private org.openqa.selenium.WebElement createWebElement(org.openqa.selenium.WebElement from) {
-        return new EventFiringWebElement(from);
+    private org.openqa.selenium.WebElement createWebElement(By by, WebElement from) {
+
+        Element temp = new UIElement(by,from);
+        return new EventFiringWebElement(temp);
     }
 
     public Keyboard getKeyboard() {
@@ -311,13 +307,13 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
         }
     }
 
-    private class EventFiringWebElement implements WebElement, WrapsElement, WrapsDriver, Locatable {
+    private class EventFiringWebElement implements Element {
 
-        private final org.openqa.selenium.WebElement element;
+        private final Element element;
         private final org.openqa.selenium.WebElement underlyingElement;
 
-        private EventFiringWebElement(final org.openqa.selenium.WebElement element) {
-            this.element = (org.openqa.selenium.WebElement) Proxy.newProxyInstance(
+        private EventFiringWebElement(final Element element) {
+            this.element = (Element) Proxy.newProxyInstance(
                     WebDriverEventListener.class.getClassLoader(),
                     extractInterfaces(element),
                     new InvocationHandler() {
@@ -334,7 +330,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
                         }
                     }
             );
-            this.underlyingElement = element;
+            this.underlyingElement = element.getWrappedElement();
         }
 
         public void click() {
@@ -379,9 +375,15 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
             return element.getText();
         }
 
+        @Override
+        public By getBy() {
+            return element.getBy();
+        }
+
         public boolean isDisplayed() {
             return element.isDisplayed();
         }
+
 
         public Point getLocation() {
             return element.getLocation();
@@ -399,7 +401,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
             dispatcher.beforeFindBy(by, element, driver);
             org.openqa.selenium.WebElement temp = element.findElement(by);
             dispatcher.afterFindBy(by, element, driver);
-            return createWebElement(temp);
+            return createWebElement(by,temp);
         }
 
         public List<org.openqa.selenium.WebElement> findElements(By by) {
@@ -408,9 +410,14 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
             dispatcher.afterFindBy(by, element, driver);
             List<org.openqa.selenium.WebElement> result = new ArrayList<org.openqa.selenium.WebElement>(temp.size());
             for (org.openqa.selenium.WebElement element : temp) {
-                result.add(createWebElement(element));
+                result.add(createWebElement(by,element));
             }
             return result;
+        }
+
+        @Override
+        public String getName(){
+            return element.getName();
         }
 
         public org.openqa.selenium.WebElement getWrappedElement() {
@@ -441,7 +448,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
             return underlyingElement.toString();
         }
 
-        public WebDriver getWrappedDriver() {
+        public org.openqa.selenium.WebDriver getWrappedDriver() {
             return driver;
         }
 
@@ -452,7 +459,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
 
     private class EventFiringNavigation implements Navigation {
 
-        private final WebDriver.Navigation navigation;
+        private final Navigation navigation;
 
         EventFiringNavigation(Navigation navigation) {
             this.navigation = navigation;
@@ -566,23 +573,23 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
             this.targetLocator = targetLocator;
         }
 
-        public WebDriver frame(int frameIndex) {
+        public org.openqa.selenium.WebDriver frame(int frameIndex) {
             return targetLocator.frame(frameIndex);
         }
 
-        public WebDriver frame(String frameName) {
+        public org.openqa.selenium.WebDriver frame(String frameName) {
             return targetLocator.frame(frameName);
         }
 
-        public WebDriver frame(org.openqa.selenium.WebElement frameElement) {
+        public org.openqa.selenium.WebDriver frame(org.openqa.selenium.WebElement frameElement) {
             return targetLocator.frame(frameElement);
         }
 
-        public WebDriver window(String windowName) {
+        public org.openqa.selenium.WebDriver window(String windowName) {
             return targetLocator.window(windowName);
         }
 
-        public WebDriver defaultContent() {
+        public org.openqa.selenium.WebDriver defaultContent() {
             return targetLocator.defaultContent();
         }
 

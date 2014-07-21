@@ -1,48 +1,56 @@
 package com.prototest.appdriver;
 
-/**
- * Created by Brian on 7/7/2014.
- */
-
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
 import java.io.File;
-import java.lang.reflect.Method;
-import java.util.Dictionary;
-import java.util.Enumeration;
 
 @Listeners({TimestampedHTMLReporter.class,
         TimestamppedXMLReporter.class,
         org.uncommons.reportng.JUnitXMLReporter.class,
-        VerificationsListener.class,ScreenshotListener.class})
+        VerificationsListener.class,TestListener.class,BrowserLaunchListener.class})
 public class TestSuite {
 
     private static final ThreadLocal<TestContainer> tests = new ThreadLocal<TestContainer>();
-
-    @BeforeMethod
-    void testSuiteBeforeMethod(Method method){
-        Logger.info("Starting test " + method.getName());
-        Verifications.clearVerifications();
-        tests.set(new TestContainer(method.getName()));
+//    @BeforeMethod
+//    protected void testSuiteBeforeMethod(Method method){
+//        Logger.info("Starting test " + method.getName());
+//        tests.get().verifications.clearVerifications();
+//        tests.set(new TestContainer(method.getName()));
+//    }
+//
+//    @AfterMethod
+//    protected void testSuiteAfterMethod(Method method){
+//        Logger.info("Ending test " + method.getName());
+//        tests.remove();
+//    }
+//
+//    @BeforeTest
+//    protected void testSuiteBeforeTest(){
+//        createReportDirectory();
+//    }
+    public static void createTest(String name){
+        tests.set(new TestContainer(name));
     }
 
-    @AfterMethod
-    void testSuiteAfterMethod(Method method){
-        Logger.info("Ending test " + method.getName());
+    public static void deleteTest(){
         tests.remove();
     }
 
-    @BeforeTest
-    void testSuiteBeforeTest(){
-        createReportDirectory();
+    public static TestContainer getTest(){
+        return tests.get();
     }
 
-    void createReportDirectory() {
+    protected void createReportDirectory() {
         String testDir = "test-output";
         File report = new File(testDir);
         report.mkdir();
+    }
+
+    public static WebDriver getDriver(){
+        return tests.get().driver;
+    }
+
+    public static WebDriver setDriver(WebDriver driver){
+        return tests.get().driver = driver;
     }
 }

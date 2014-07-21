@@ -11,7 +11,7 @@ public class VerificationsListener implements IHookable {
     public void run(IHookCallBack callBack, ITestResult testResult) {
         callBack.runTestMethod(testResult);
 
-        Verifications.assertVerifications();
+        TestSuite.getTest().verifications.assertVerifications();
 
     }
 }

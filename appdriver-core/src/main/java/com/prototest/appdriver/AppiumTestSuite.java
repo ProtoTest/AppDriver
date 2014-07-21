@@ -18,10 +18,6 @@ public class AppiumTestSuite extends TestSuite {
         launchApp();
     }
 
-    public static WebDriver getDriver() {
-        return driver;
-    }
-
     public void launchApp() {
         driver = new BrowserManager().launchAppDriver();
     }

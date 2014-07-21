@@ -1,5 +1,7 @@
 package com.prototest.appdriver;
 
+import com.prototest.appdriver.Elements.Element;
+
 public class Verification implements Validation{
     protected Element element;
     protected boolean condition;
@@ -19,7 +21,7 @@ public class Verification implements Validation{
     }
 
     void validateCondition(){
-        Verifications.addVerification(this.message,this.condition);
+        TestSuite.getTest().verifications.addVerification(this.message,this.condition);
     }
 
     protected String getConditional(){
@@ -40,7 +42,7 @@ public class Verification implements Validation{
 
         for(int i=0;i<this.timeout;i++){
             if(element.isPresent()) {
-                this.message = String.format("Element (%s) is%s present", element.getBy().toString(), getConditional(true));
+                this.message = String.format("%s (%s) is%s present", element.getName(),element.getBy(), getConditional(true));
                 return true;
             }
             else
@@ -49,7 +51,7 @@ public class Verification implements Validation{
                 } catch (InterruptedException e) {
                 }
         }
-        this.message = String.format("Element (%s) is%s present",element.getBy().toString(), getConditional(false));
+        this.message = String.format("%s (%s) is%s present",element.getName(),element.getBy(), getConditional(false));
         return false;
     }
 
@@ -60,7 +62,7 @@ public class Verification implements Validation{
             
             String pageText = this.element.getText();
             this.condition = pageText.contains(text);
-            this.message = String.format("Element (%s) does%s contain text '%s'",element.getBy().toString(), getConditional(), text);
+            this.message = String.format("%s (%s) does%s contain text '%s'",element.getName(),element.getBy(), getConditional(), text);
         }
        // this.condition = pageText.contains(text);
         validateCondition();
@@ -74,7 +76,7 @@ public class Verification implements Validation{
 
             String pageText = this.element.getValue();
             this.condition = pageText.contains(text);
-            this.message = String.format("Element (%s) does%s contain value : '%s'",element.getBy().toString(), getConditional(), text);
+            this.message = String.format("%s (%s) does%s contain value : '%s'",element.getName(),element.getBy(), getConditional(), text);
         }
         validateCondition();
         return this;
@@ -83,8 +85,10 @@ public class Verification implements Validation{
 
     public Verification visible()
     {
-        this.condition = waitForElement() && this.element.isDisplayed();
-        this.message = String.format("Element (%s) is%s visible ",element.getBy().toString(), getConditional());
+        this.condition = waitForElement();
+        boolean displayed = this.element.isDisplayed();
+        this.condition = this.condition && displayed;
+        this.message = String.format("%s (%s) is%s visible ",element.getName(),element.getBy(), getConditional());
         validateCondition();
         return this;
     }
@@ -92,7 +96,7 @@ public class Verification implements Validation{
     public Verification present()
     {
         this.condition = waitForElement();
-        this.message = String.format("Element (%s) is%s present",element.getBy().toString(), getConditional());
+        this.message = String.format("%s (%s) is%s present",element.getName(),element.getBy(), getConditional());
         validateCondition();
         return this;
     }
@@ -107,8 +111,9 @@ public class Verification implements Validation{
 
         @Override
         protected void validateCondition(){
-            Verifications.addVerification(this.message,!this.condition);
+            TestSuite.getTest().verifications.addVerification(this.message,!this.condition);
         }
+
 
     }
 }

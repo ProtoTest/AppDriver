@@ -37,7 +37,8 @@ public class BrowserManager {
 
         Logger.debug("launchBrowser(): Using browser = " + browser.toString());
         driver.manage().deleteAllCookies();
-         return new WebDriver(driver);
+         TestSuite.setDriver(new WebDriver(driver));
+        return TestSuite.getDriver();
     }
 
     public DesiredCapabilities getCapabilitiesForBrowser(Browser browser)
@@ -58,12 +59,14 @@ public class BrowserManager {
         }
     }
 
-    public org.openqa.selenium.WebDriver launchRemoteBrowser(Browser browser, String host)
+    public WebDriver launchRemoteBrowser(Browser browser, String host)
     {
         DesiredCapabilities desiredCapabilities = getCapabilitiesForBrowser(browser);
         try {
             URL remoteAddress = new URL("http://"+ host +":4444/wd/hub");
-            //return new EventedWebDriver(new RemoteWebDriver(remoteAddress, desiredCapabilities)).driver;
+            WebDriver driver =
+            TestSuite.setDriver(new WebDriver(new RemoteWebDriver(remoteAddress, desiredCapabilities)));
+            return TestSuite.getDriver();
         } catch (MalformedURLException e) {
             Logger.error(e.getMessage());
         }

@@ -1,19 +1,19 @@
 package com.prototest.appdriver.pageobjects.google;
 
-import com.prototest.appdriver.Element;
+import com.prototest.appdriver.Elements.UIElement;
 import org.openqa.selenium.By;
 
 public class GoogleResultsPage {
     //Element googleLogo = new Element("GoogleLogo", By.className("qbqlca"));
-    Element searchField = new Element("SearchField", By.name("q"));
-    Element searchButton = new Element("SearchButton", By.name("btnK"));
-    Element signInButton = new Element("SignInButton", By.className("gbit"));
-    Element gmailbutton = new Element("GmailButton", By.partialLinkText("Gmail"));
-    private Element searchResult;
+    UIElement searchField = new UIElement("SearchField", By.name("q"));
+    UIElement searchButton = new UIElement("SearchButton", By.name("btnK"));
+    UIElement signInButton = new UIElement("SignInButton", By.className("gbit"));
+    UIElement gmailbutton = new UIElement("GmailButton", By.partialLinkText("Gmail"));
+    private UIElement searchResult;
 
-    public Element searchResult(String text)
+    public UIElement searchResult(String text)
     {
-         searchResult = new Element("SearchResultLink", By.partialLinkText(text));
+         searchResult = new UIElement("SearchResultLink", By.partialLinkText(text));
         return searchResult;
     }
 
@@ -34,7 +34,7 @@ public class GoogleResultsPage {
 
     public GoogleResultsPage VerifyResultNotVisible(String text)
     {
-        searchResult(text).verify(10).Not.visible();
+        searchResult(text).verify(10).not().visible();
         return new GoogleResultsPage();
     }
 
