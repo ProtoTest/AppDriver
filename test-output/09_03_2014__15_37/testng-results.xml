@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:35 922] Starting test TestGoogle</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:36 214] Running setUp before test</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:41 098] Navigating to http://www.google.com/</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:42 980] Finding Element By.id: hplogo</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 400] Verification Passed : Element (By.id: hplogo) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 403] Finding Element By.id: gbqfq</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 637] Verification Passed : Element (By.id: gbqfq) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 637] Finding Element By.name: btnK</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 833] Verification Passed : Element (By.name: btnK) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 834] Finding Element By.name: btnI</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 123] Verification Passed : Element (By.name: btnI) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 124] Finding Element By.id: gb_70</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 300] Verification Passed : Element (By.id: gb_70) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 301] Finding Element By.linkText: Gmail</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 633] Verification Passed : Element (By.linkText: Gmail) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 645] Typing into Element [[FirefoxDriver: firefox on XP (356785d7-0a8a-4c8f-8d90-24b6cc65e580)] -> id: gbqfq]</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 681] Typing into Element [[FirefoxDriver: firefox on XP (356785d7-0a8a-4c8f-8d90-24b6cc65e580)] -> id: gbqfq]</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 843] Finding Element By.className: gb_Fa</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 006] Verification Passed : Element (By.className: gb_Fa) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 007] Finding Element By.name: q</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 399] Verification Passed : Element (By.name: q) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 400] Finding Element By.linkText: Sign in</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 955] Verification Passed : Element (By.linkText: Sign in) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 956] Finding Element By.id: gbwa</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 188] Verification Passed : Element (By.id: gbwa) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 189] Finding Element By.id: abar_button_opt</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 446] Verification Passed : Element (By.id: abar_button_opt) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 447] Finding Element By.id: gbqfb</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 758] Verification Passed : Element (By.id: gbqfb) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 759] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 283] Verification Passed : Element (By.partialLinkText: Home « ProtoTest) is present</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 283] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 981] Verification Passed : Element (By.partialLinkText: Home « ProtoTest) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 982] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:49 637] Verification Passed : Element (By.partialLinkText: Home « ProtoTest) is visible </div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:49 638] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div>DEBUG: [09-03-2014 03:37:50 333] Clicking Element [[FirefoxDriver: firefox on XP (356785d7-0a8a-4c8f-8d90-24b6cc65e580)] -> partial link text: Home « ProtoTest]</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:50 602] Ending test TestGoogle</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:50 761] Running tearDown() after test</div>]]>
+    </line>
+  </reporter-output>
+  <suite name="Custom suite" duration-ms="15153" started-at="2014-09-03T21:37:35Z" finished-at="2014-09-03T21:37:51Z">
+    <groups>
+    </groups>
+    <test name="appdriver-parent" duration-ms="15153" started-at="2014-09-03T21:37:35Z" finished-at="2014-09-03T21:37:51Z">
+      <class name="com.prototest.appdriver.tests.GoogleTests">
+        <test-method status="PASS" signature="browserTestBeforeMethod(java.lang.reflect.Method, java.lang.String, java.lang.String, java.lang.Integer)[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@667a738]" name="browserTestBeforeMethod" is-config="true" duration-ms="5135" started-at="2014-09-03T15:37:35Z" finished-at="2014-09-03T15:37:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.prototest.appdriver.tests.GoogleTests.TestGoogle()]]>
+              </value>
+            </param>
+            <param index="1">
+              <value is-null="true"/>
+            </param>
+            <param index="2">
+              <value is-null="true"/>
+            </param>
+            <param index="3">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:35 922] Starting test TestGoogle</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:36 214] Running setUp before test</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- browserTestBeforeMethod -->
+        <test-method status="PASS" signature="TestGoogle()[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@667a738]" name="TestGoogle" duration-ms="9554" started-at="2014-09-03T15:37:41Z" finished-at="2014-09-03T15:37:50Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:41 098] Navigating to http://www.google.com/</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:42 980] Finding Element By.id: hplogo</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 400] Verification Passed : Element (By.id: hplogo) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 403] Finding Element By.id: gbqfq</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 637] Verification Passed : Element (By.id: gbqfq) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 637] Finding Element By.name: btnK</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 833] Verification Passed : Element (By.name: btnK) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:43 834] Finding Element By.name: btnI</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 123] Verification Passed : Element (By.name: btnI) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 124] Finding Element By.id: gb_70</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 300] Verification Passed : Element (By.id: gb_70) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 301] Finding Element By.linkText: Gmail</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 633] Verification Passed : Element (By.linkText: Gmail) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 645] Typing into Element [[FirefoxDriver: firefox on XP (356785d7-0a8a-4c8f-8d90-24b6cc65e580)] -> id: gbqfq]</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 681] Typing into Element [[FirefoxDriver: firefox on XP (356785d7-0a8a-4c8f-8d90-24b6cc65e580)] -> id: gbqfq]</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:44 843] Finding Element By.className: gb_Fa</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 006] Verification Passed : Element (By.className: gb_Fa) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 007] Finding Element By.name: q</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 399] Verification Passed : Element (By.name: q) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 400] Finding Element By.linkText: Sign in</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 955] Verification Passed : Element (By.linkText: Sign in) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:46 956] Finding Element By.id: gbwa</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 188] Verification Passed : Element (By.id: gbwa) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 189] Finding Element By.id: abar_button_opt</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 446] Verification Passed : Element (By.id: abar_button_opt) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 447] Finding Element By.id: gbqfb</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 758] Verification Passed : Element (By.id: gbqfb) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:47 759] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 283] Verification Passed : Element (By.partialLinkText: Home « ProtoTest) is present</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 283] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 981] Verification Passed : Element (By.partialLinkText: Home « ProtoTest) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:48 982] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:49 637] Verification Passed : Element (By.partialLinkText: Home « ProtoTest) is visible </div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:49 638] Finding Element By.partialLinkText: Home « ProtoTest</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div>DEBUG: [09-03-2014 03:37:50 333] Clicking Element [[FirefoxDriver: firefox on XP (356785d7-0a8a-4c8f-8d90-24b6cc65e580)] -> partial link text: Home « ProtoTest]</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestGoogle -->
+        <test-method status="PASS" signature="browserTestAfterMethod(java.lang.reflect.Method)[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@667a738]" name="browserTestAfterMethod" is-config="true" duration-ms="451" started-at="2014-09-03T15:37:50Z" finished-at="2014-09-03T15:37:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.prototest.appdriver.tests.GoogleTests.TestGoogle()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:50 602] Ending test TestGoogle</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [09-03-2014 03:37:50 761] Running tearDown() after test</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- browserTestAfterMethod -->
+      </class> <!-- com.prototest.appdriver.tests.GoogleTests -->
+    </test> <!-- appdriver-parent -->
+  </suite> <!-- Custom suite -->
+</testng-results>

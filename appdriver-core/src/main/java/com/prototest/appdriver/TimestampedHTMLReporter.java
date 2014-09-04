@@ -26,6 +26,12 @@ public class TimestampedHTMLReporter extends HTMLReporter {
             screenshotDir.renameTo(newScreenshotDir);
             screenshotDir.delete();
 
+            File video = TestSuite.recorder.getVideoFile();
+            File videoDir = new File(outputDirectoryName + "\\videos\\");
+            File newVideo = new File(videoDir,video.getName());
+            videoDir.mkdirs();
+
+            video.renameTo(newVideo);
             System.out.println("HTMLReport : " + new File(outputDirectoryName).getAbsolutePath() + "\\html\\index.html");
 
               //  }

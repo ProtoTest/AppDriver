@@ -4,23 +4,21 @@ import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 public class ScreenshotListener extends TestListenerAdapter {
-    @Inject
-    Logger logger;
-
+    AutoInjector injector = new AutoInjector();
     @Override
     public void onTestFailure(ITestResult tr) {
-        logger.error("Test Failed, taking a screenshot");
-        logger.screenshot();
+        injector.logger.error("Test Failed, taking a screenshot");
+        injector.logger.screenshot();
     }
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        logger.info("Test was skipped ; " + tr.getTestName());
+        injector.logger.info("Test was skipped ; " + tr.getTestName());
     }
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        logger.info("Test passed ; " + tr.getTestName());
+        injector.logger.info("Test passed ; " + tr.getTestName());
     }
 
 

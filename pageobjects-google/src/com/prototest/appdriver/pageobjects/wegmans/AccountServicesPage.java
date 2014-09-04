@@ -20,13 +20,13 @@ public class AccountServicesPage {
     public AccountServicesPage VerifyAccountServicesPageElements()
     {
         Reporter.log("Verifying Account Services page elements.");
-        AccountServicesESpot.Verify.visible();
-        AccountServicesHeader.Verify.visible();
-        CreateAnAccount.Verify.visible();
-        ForgotPassword.Verify.visible();
-        ForgotUsername.Verify.visible();
-        //HelpText.verify.visible();
-        UseAppAsGuest.Verify.visible();
+        AccountServicesESpot.verify().visible();
+        AccountServicesHeader.verify().visible();
+        CreateAnAccount.verify().visible();
+        ForgotPassword.verify().visible();
+        ForgotUsername.verify().visible();
+        //HelpText.verify().visible();
+        UseAppAsGuest.verify().visible();
         return this;
     }
 

@@ -20,7 +20,9 @@ public abstract class SuperPage {
     private PageObjectFactory pageObjectFactory;
 
 
-    abstract protected void init();
+    protected void init(){
+
+    }
     /**
      * Verifies elements on the page are present. The default implementation does nothing.
      */

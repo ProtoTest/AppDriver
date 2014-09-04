@@ -61,6 +61,12 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>com.pojosontheweb</groupId>
+            <artifactId>monte-repack</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>

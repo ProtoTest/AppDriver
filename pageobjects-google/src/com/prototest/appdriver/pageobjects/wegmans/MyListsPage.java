@@ -18,11 +18,11 @@ public class MyListsPage {
     public MyListsPage VerifyMyListsPageElements()
     {
         Reporter.log("Verifying My Lists page elements.");
-        MyListsHeader.Verify.visible();
-        AddToList.Verify.visible();
-        EditList.Verify.visible();
-        MoreOptions.Verify.visible();
-        RecipeHeaderTitle.Verify.visible();
+        MyListsHeader.verify().visible();
+        AddToList.verify().visible();
+        EditList.verify().visible();
+        MoreOptions.verify().visible();
+        RecipeHeaderTitle.verify().visible();
         return this;
     }
 

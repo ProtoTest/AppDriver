@@ -34,7 +34,7 @@ public class GoogleResultsPage {
 
     public GoogleResultsPage VerifyResultNotVisible(String text)
     {
-        searchResult(text).verify(10).Not.visible();
+        searchResult(text).verify().Not.visible();
         return new GoogleResultsPage();
     }
 

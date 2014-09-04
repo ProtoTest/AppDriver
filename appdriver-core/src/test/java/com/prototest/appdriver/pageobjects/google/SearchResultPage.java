@@ -11,6 +11,11 @@ public class SearchResultPage extends SuperPage {
 
     }
 
+    public GoogleResultsPage goBack(){
+        getDriver().navigate().back();
+        return buildPage(GoogleResultsPage.class);
+    }
+
     @Override
     protected void waitForElements() {
 

@@ -12,7 +12,7 @@ public class BrowserTestsModule extends AbstractModule {
         //bind(WebDriverFactory.class);
         bind(PageObjectFactory.class);
         bind(Verifications.class);
-        requestStaticInjection(Verifications.class, WebElement.class);
+        requestStaticInjection(Verifications.class, WebElement.class,AutoInjector.class);
 
     }
 }

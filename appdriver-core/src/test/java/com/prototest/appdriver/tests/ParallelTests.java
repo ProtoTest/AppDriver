@@ -47,15 +47,16 @@ public class ParallelTests extends BrowserTestSuite {
         logger.info("!!!!!!!!! setChrome = " + setChrome + " current browsa is " + driverFactory.get().driver.getClass().getSimpleName() + " thread id is " + Thread.currentThread().getId());
 
     }
-    @Test(invocationCount = 20, threadPoolSize = 10)
+    @Test(invocationCount = 10, threadPoolSize = 5)
     public void TestParallel() {
 
         new GoogleHomePage();
         buildPage(GoogleHomePage.class).
-                searchFor("ProtoTest").
-                verifyResult("Home « ProtoTest").
-                verifyResultNotVisible("asdfasdf").
-                goToResult("Home « ProtoTest");
+                searchFor("ESPN").
+                verifyResult("ESPN: The Worldwide Leader In Sports").
+                verifyResult("ESPN Fantasy Football").
+                verifyResult("ESPN - YouTube").
+                goToResult("ESPN: The Worldwide Leader In Sports");
     }
 
 }

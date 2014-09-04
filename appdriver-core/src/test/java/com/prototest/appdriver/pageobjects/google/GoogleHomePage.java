@@ -11,16 +11,16 @@ public class GoogleHomePage extends SuperPage {
     Element searchButton = new Element("SearchButton", By.name("btnK"));
     Element feelingLuckyButton = new Element("ImFeelingLuckyButton", By.name("btnI"));
     Element signInButton = new Element("SignInButon", By.id("gb_70"));
-    Element gmailbutton = new Element("GmailButton", By.className("gb_c"));
+    Element gmailbutton = new Element("GmailButton", By.linkText("Gmail"));
 
     @Override
     public void init() {
         getDriver().navigate().to("http://www.google.com/");
-        //return new GoogleHomePage();
     }
 
     @Override
     protected void waitForElements() {
+        googleLogo.verify().visible();
         searchField.verify().visible();
         searchButton.verify().visible();
         feelingLuckyButton.verify().visible();

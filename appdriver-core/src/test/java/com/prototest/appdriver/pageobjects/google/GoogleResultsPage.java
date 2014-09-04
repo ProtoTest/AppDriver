@@ -6,11 +6,12 @@ import com.prototest.appdriver.SuperPage;
 import org.openqa.selenium.By;
 
 public class GoogleResultsPage extends SuperPage {
-    //Element googleLogo = new Element("GoogleLogo", By.className("qbqlca"));
+    Element googleLogo = new Element("GoogleLogo", By.className("gb_Fa"));
     Element searchField = new Element("SearchField", By.name("q"));
-    Element searchButton = new Element("SearchButton", By.name("btnK"));
-    Element signInButton = new Element("SignInButton", By.className("gbit"));
-    Element gmailbutton = new Element("GmailButton", By.partialLinkText("Gmail"));
+    Element searchButton = new Element("SearchButton", By.id("gbqfb"));
+    Element signInButton = new Element("SignInButton", By.linkText("Sign in"));
+    Element settingsButton = new Element("SettingsButton", By.id("abar_button_opt"));
+    Element servicesButton = new Element("ServicesButton", By.id("gbwa"));
     private Element searchResult;
 
     public Element searchResult(String text)
@@ -32,18 +33,19 @@ public class GoogleResultsPage extends SuperPage {
     {
         searchResult(text).verify().present();
         searchResult(text).verify().visible();
-        return buildPage(GoogleResultsPage.class);
+        return this;
     }
 
     public GoogleResultsPage verifyResultNotVisible(String text)
     {
         searchResult(text).verify().not().present();
         searchResult(text).verify().not().visible();
-        return buildPage(GoogleResultsPage.class);
+        return this;
     }
 
     public SearchResultPage goToResult(String text)
     {
+        searchResult(text).verify(10).visible();
         searchResult(text).click();
         return buildPage(SearchResultPage.class);
     }
@@ -55,6 +57,16 @@ public class GoogleResultsPage extends SuperPage {
 
     @Override
     protected void waitForElements() {
+        googleLogo.verify().visible();
+        searchField.verify().visible();
+        signInButton.verify().visible();
+        servicesButton.verify().visible();
+        settingsButton.verify().visible();
+        searchButton.verify().visible();
+    }
 
+    public GoogleHomePage goBack(){
+        getDriver().navigate().back();
+        return buildPage(GoogleHomePage.class);
     }
 }
