@@ -20,7 +20,7 @@ public class CurrentContext {
            try {
                Class originalClass = Class.forName(className);
                //Logger.info("Class : " + className);
-           if(PageObject.class.isAssignableFrom(originalClass) && methodName!= "<init>"){
+           if(SuperPage.class.isAssignableFrom(originalClass) && methodName!= "<init>"){
                String pageObjectName = stripPackageName(className);
                return pageObjectName + "." + methodName;
            }
