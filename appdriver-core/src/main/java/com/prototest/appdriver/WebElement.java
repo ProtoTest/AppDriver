@@ -94,7 +94,7 @@ public abstract class WebElement implements org.openqa.selenium.WebElement, Wrap
      public File getImage(){
          org.openqa.selenium.Dimension size = getSize();
          if(isDisplayed()==false){
-             throw new GolemException("Cannot get Image for elements not displayed");
+             throw new RuntimeException("Cannot get Image for elements not displayed");
          }
           File screenshot=  getDriver().getScreenshot();
           Rectangle crop = new Rectangle(getLocation().x,getLocation().y,size.getWidth(),size.getHeight());
