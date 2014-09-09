@@ -32,7 +32,7 @@ public class Logger {
         java.util.Date date = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss SSS");
         String timestamp = sdf.format(date);
-        text = String.format("INFO: [%s] %s", timestamp, text);
+        text = String.format("INFO: [%s] %s %s", timestamp, CurrentContext.getCurrentContext(),text);
         System.out.println(text);
         Reporter.log(String.format("<div style=\"color:Blue\">%s</div>", text));
     }
@@ -45,7 +45,7 @@ public class Logger {
         java.util.Date date = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss SSS");
         String timestamp = sdf.format(date);
-        text = String.format("DEBUG: [%s] %s", timestamp, text);
+        text = String.format("DEBUG: [%s] %s %s", timestamp, CurrentContext.getCurrentContext(),text);
         System.out.println(text);
         Reporter.log(String.format("<div>%s</div>", text));
     }
@@ -58,7 +58,7 @@ public class Logger {
         java.util.Date date = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss SSS");
         String timestamp = sdf.format(date);
-        text = String.format("WARNING: (%s) %s", timestamp, text);
+        text = String.format("WARNING: [%s] %s %s", timestamp, CurrentContext.getCurrentContext(),text);
         System.out.println("----> " + text);
         System.setProperty("org.uncommons.reportng.escape-output", "false");
         Reporter.log(String.format("<div style=\"background-color:yellow\">%s</div>", text));
@@ -69,7 +69,7 @@ public class Logger {
         java.util.Date date = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss SSS");
         String timestamp = sdf.format(date);
-        text = String.format("ERROR: (%s) %s", timestamp, text);
+        text = String.format("ERROR: [%s] %s %s", timestamp, CurrentContext.getCurrentContext(),text);
         System.out.println("!---- " + text);
         System.setProperty("org.uncommons.reportng.escape-output", "false");
         Reporter.log(String.format("<div style=\"background-color:red; color:white\">%s</div>", text));
@@ -81,7 +81,7 @@ public class Logger {
         java.util.Date date = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss SSS");
         String timestamp = sdf.format(date);
-        text = String.format("SCREENSHOT: [%s] %s", timestamp, text);
+        text = String.format("SCREENSHOT: [%s] %s %s", timestamp, CurrentContext.getCurrentContext(),text);
         System.out.println(text);
         Reporter.log(String.format("<div>%s</div>", text));
         Reporter.log(String.format("<img src=\"%s\"/>", path));

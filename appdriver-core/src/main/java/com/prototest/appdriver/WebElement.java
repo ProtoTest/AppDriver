@@ -2,9 +2,15 @@ package com.prototest.appdriver;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.WrapsDriver;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public abstract class WebElement implements org.openqa.selenium.WebElement, WrapsDriver {
@@ -79,6 +85,30 @@ public abstract class WebElement implements org.openqa.selenium.WebElement, Wrap
      public String getValue(){
         return getAttribute("value");
     }
+
+    private BufferedImage cropImage(BufferedImage src, Rectangle rect) {
+        BufferedImage dest = src.getSubimage(0, 0, rect.width, rect.height);
+        return dest;
+    }
+
+     public File getImage(){
+         org.openqa.selenium.Dimension size = getSize();
+         if(isDisplayed()==false){
+             throw new GolemException("Cannot get Image for elements not displayed");
+         }
+          File screenshot=  getDriver().getScreenshot();
+          Rectangle crop = new Rectangle(getLocation().x,getLocation().y,size.getWidth(),size.getHeight());
+         try {
+             BufferedImage elementImage = cropImage(ImageIO.read(screenshot),crop);
+             File endFile = new File("\\element_images\\image.png");
+             ImageIO.write(elementImage,"PNG",endFile);
+             return endFile;
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         return null;
+     }
+
 
 //     public WebElement WaitForPresent(WebElement element, By by)
 //    {
