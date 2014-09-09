@@ -1,15 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="appdriver-parent"
            tests="3"
-           failures="0"
+           failures="1"
            errors="0"
-           skipped="0"
-           time="34.820">
+           skipped="2"
+           time="0.000">
   <properties />
+            <testcase name="browserTestBeforeMethod" time="0.000" classname="com.prototest.appdriver.tests.GoogleTests">
+                <failure type="java.lang.NoClassDefFoundError"
+                  message="org/apache/http/conn/SchemePortResolver"
+              >
+<![CDATA[java.lang.NoClassDefFoundError: org/apache/http/conn/SchemePortResolver
+  org.openqa.selenium.remote.HttpCommandExecutor.<init>(HttpCommandExecutor.java:99)
+  org.openqa.selenium.remote.HttpCommandExecutor.<init>(HttpCommandExecutor.java:82)
+  org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.start(NewProfileExtensionConnection.java:93)
+  org.openqa.selenium.firefox.FirefoxDriver.startClient(FirefoxDriver.java:246)
+  org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:114)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:191)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:186)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:182)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:95)
+  com.prototest.appdriver.WebDriverFactory.startFirefoxBrowser(WebDriverFactory.java:95)
+  com.prototest.appdriver.WebDriverFactory.build(WebDriverFactory.java:38)
+  com.prototest.appdriver.BrowserTestSuite.browserTestBeforeMethod(BrowserTestSuite.java:48)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  java.lang.reflect.Method.invoke(Method.java:483)
+  org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+  org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+  org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+  org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+  org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+  org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+  org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+  org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+  org.testng.TestRunner.privateRun(TestRunner.java:767)
+  org.testng.TestRunner.run(TestRunner.java:617)
+  org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+  org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+  org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+  org.testng.SuiteRunner.run(SuiteRunner.java:240)
+  org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+  org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+  org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+  org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+  org.testng.TestNG.run(TestNG.java:1057)
+  org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+  org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+  org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+  org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:125)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  java.lang.reflect.Method.invoke(Method.java:483)
+  com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: java.lang.ClassNotFoundException: org.apache.http.conn.SchemePortResolver
+  java.net.URLClassLoader$1.run(URLClassLoader.java:372)
+  java.net.URLClassLoader$1.run(URLClassLoader.java:361)
+  java.security.AccessController.doPrivileged(Native Method)
+  java.net.URLClassLoader.findClass(URLClassLoader.java:360)
+  java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+  sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+  java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+  org.openqa.selenium.remote.HttpCommandExecutor.<init>(HttpCommandExecutor.java:99)
+  org.openqa.selenium.remote.HttpCommandExecutor.<init>(HttpCommandExecutor.java:82)
+  org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.start(NewProfileExtensionConnection.java:93)
+  org.openqa.selenium.firefox.FirefoxDriver.startClient(FirefoxDriver.java:246)
+  org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:114)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:191)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:186)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:182)
+  org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:95)
+  com.prototest.appdriver.WebDriverFactory.startFirefoxBrowser(WebDriverFactory.java:95)
+  com.prototest.appdriver.WebDriverFactory.build(WebDriverFactory.java:38)
+  com.prototest.appdriver.BrowserTestSuite.browserTestBeforeMethod(BrowserTestSuite.java:48)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  java.lang.reflect.Method.invoke(Method.java:483)
+  org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+  org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+  org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+  org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+  org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+  org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+  org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+  org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+  org.testng.TestRunner.privateRun(TestRunner.java:767)
+  org.testng.TestRunner.run(TestRunner.java:617)
+  org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+  org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+  org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+  org.testng.SuiteRunner.run(SuiteRunner.java:240)
+  org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+  org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+  org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+  org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+  org.testng.TestNG.run(TestNG.java:1057)
+  org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+  org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+  org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+  org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:125)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  java.lang.reflect.Method.invoke(Method.java:483)
+  com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+]]>
+      </failure>
+
+          </testcase>
+  
+            <testcase name="browserTestAfterMethod" time="0.0" classname="com.prototest.appdriver.tests.GoogleTests">
+          <skipped />
+    </testcase>
+            <testcase name="TestGoogleRhree" time="0.0" classname="com.prototest.appdriver.tests.GoogleTests">
+          <skipped />
+    </testcase>
   
   
-            <testcase name="TestGoogleTwo" time="9.496" classname="com.prototest.appdriver.tests.GoogleTests" />
-                <testcase name="TestGoogle" time="15.770" classname="com.prototest.appdriver.tests.GoogleTests" />
-                <testcase name="TestGoogleRhree" time="9.554" classname="com.prototest.appdriver.tests.GoogleTests" />
-      
 </testsuite>

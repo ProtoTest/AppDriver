@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="1" failed="0" total="1" passed="0">
+  <reporter-output>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [09-09-2014 01:00:44 316] TestSuite.testSuiteBeforeMethod Starting test TestGoogleRhree</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [09-09-2014 01:00:44 324] BrowserTestSuite.browserTestBeforeMethod Running setUp before test</div>]]>
+    </line>
+    <line>
+      <![CDATA[<div style="color:Blue">INFO: [09-09-2014 01:00:46 415]  Test was skipped ; null</div>]]>
+    </line>
+  </reporter-output>
+  <suite name="Custom suite" duration-ms="2126" started-at="2014-09-09T19:00:44Z" finished-at="2014-09-09T19:00:46Z">
+    <groups>
+    </groups>
+    <test name="appdriver-parent" duration-ms="2126" started-at="2014-09-09T19:00:44Z" finished-at="2014-09-09T19:00:46Z">
+      <class name="com.prototest.appdriver.tests.GoogleTests">
+        <test-method status="FAIL" signature="browserTestBeforeMethod(java.lang.reflect.Method, java.lang.String, java.lang.String, java.lang.Integer)[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@3ee0fea4]" name="browserTestBeforeMethod" is-config="true" duration-ms="0" started-at="2014-09-09T13:00:44Z" finished-at="2014-09-09T13:00:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.prototest.appdriver.tests.GoogleTests.TestGoogleRhree()]]>
+              </value>
+            </param>
+            <param index="1">
+              <value is-null="true"/>
+            </param>
+            <param index="2">
+              <value is-null="true"/>
+            </param>
+            <param index="3">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="java.lang.NoClassDefFoundError">
+            <message>
+              <![CDATA[org/apache/http/conn/SchemePortResolver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NoClassDefFoundError: org/apache/http/conn/SchemePortResolver
+	at org.openqa.selenium.remote.HttpCommandExecutor.<init>(HttpCommandExecutor.java:99)
+	at org.openqa.selenium.remote.HttpCommandExecutor.<init>(HttpCommandExecutor.java:82)
+	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.start(NewProfileExtensionConnection.java:93)
+	at org.openqa.selenium.firefox.FirefoxDriver.startClient(FirefoxDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:114)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:191)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:186)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:182)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:95)
+	at com.prototest.appdriver.WebDriverFactory.startFirefoxBrowser(WebDriverFactory.java:95)
+	at com.prototest.appdriver.WebDriverFactory.build(WebDriverFactory.java:38)
+	at com.prototest.appdriver.BrowserTestSuite.browserTestBeforeMethod(BrowserTestSuite.java:48)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+	at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: java.lang.ClassNotFoundException: org.apache.http.conn.SchemePortResolver
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 44 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NoClassDefFoundError -->
+          <reporter-output>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [09-09-2014 01:00:44 316] TestSuite.testSuiteBeforeMethod Starting test TestGoogleRhree</div>]]>
+            </line>
+            <line>
+              <![CDATA[<div style="color:Blue">INFO: [09-09-2014 01:00:44 324] BrowserTestSuite.browserTestBeforeMethod Running setUp before test</div>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- browserTestBeforeMethod -->
+        <test-method status="SKIP" signature="TestGoogleRhree()[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@3ee0fea4]" name="TestGoogleRhree" duration-ms="0" started-at="2014-09-09T13:00:46Z" finished-at="2014-09-09T13:00:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestGoogleRhree -->
+        <test-method status="SKIP" signature="browserTestAfterMethod(java.lang.reflect.Method)[pri:0, instance:com.prototest.appdriver.tests.GoogleTests@3ee0fea4]" name="browserTestAfterMethod" is-config="true" duration-ms="0" started-at="2014-09-09T13:00:46Z" finished-at="2014-09-09T13:00:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserTestAfterMethod -->
+      </class> <!-- com.prototest.appdriver.tests.GoogleTests -->
+    </test> <!-- appdriver-parent -->
+  </suite> <!-- Custom suite -->
+</testng-results>
