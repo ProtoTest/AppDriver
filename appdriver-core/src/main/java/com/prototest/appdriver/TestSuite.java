@@ -34,6 +34,7 @@ public class TestSuite {
     PageObjectFactory pageObjectFactory;
 
 
+
     public static GolemScreenRecorder recorder = new GolemScreenRecorder();
     private static final ThreadLocal<TestContainer> tests = new ThreadLocal<TestContainer>();
 

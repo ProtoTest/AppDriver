@@ -6,10 +6,12 @@ package com.prototest.appdriver;
 abstract class ConfigFeature extends AutoInjector {
     public String key;
     public String defaultValue;
-    public ConfigFeature(){}
-    public ConfigFeature(String key, String defaultValue){
+    public String actual;
+    public boolean enabled;
+
+    public ConfigFeature(String key, boolean defaultValue){
         this.key = key;
-        this.defaultValue = defaultValue;
+        this.enabled = new Config().getConfigValue(key,defaultValue);
     }
 
     abstract void startFeature();

@@ -9,9 +9,12 @@ public class AutoInjector {
     @Inject
     Config.Settings.RuntimeSettings config;
     @Inject
+    public WebDriverFactory driverFactory;
+    @Inject
     Logger logger;
     @Inject
     static com.google.inject.Injector injector;
+
     public AutoInjector(){
         injector.injectMembers(this);
     }

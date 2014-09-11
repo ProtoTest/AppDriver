@@ -12,16 +12,16 @@ public class BrowserTestSuite extends TestSuite {
     }
 
     @Inject
-    Config.Settings.RuntimeSettings config;
+    public Config.Settings.RuntimeSettings config;
 
     @Inject
-    Logger logger;
+    public Logger logger;
 
     @Inject
-    PageObjectFactory pageObjectFactory;
+    public PageObjectFactory pageObjectFactory;
 
     @Inject
-    WebDriverFactory driverFactory;
+    public WebDriverFactory driverFactory;
 
     @BeforeTest
     @Parameters({"browser", "hostName", "hostPort"})

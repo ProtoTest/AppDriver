@@ -98,6 +98,7 @@ public final class Config {
                 try {
                     this.config = config;
                     browser = getBrowser();
+                    //
                     launchBrowser = config.getConfigValue("launchBrowser", true);
                     testTimeoutMin = config.getConfigValue("testTimeoutMin", 5);
                     elementTimeoutSec = config.getConfigValue("elementTimeoutSec", 20);
@@ -119,7 +120,7 @@ public final class Config {
             }
 
             private BrowserManager.Browser getBrowser() {
-                return BrowserManager.Browser.fromString(config.getConfigValue("browser", "firefox"));
+                return BrowserManager.Browser.fromString(config.getConfigValue("browser", "chrome"));
             }
 
             private ArrayList<BrowserManager.Browser> getBrowserList() {

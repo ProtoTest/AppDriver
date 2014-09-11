@@ -63,6 +63,7 @@ public class EventFiringWebDriver implements WebDriver, JavascriptExecutor, Take
 
     private final List<WebDriverEventListener> eventListeners =
             new ArrayList<WebDriverEventListener>();
+
     private final WebDriverEventListener dispatcher = (WebDriverEventListener) Proxy
             .newProxyInstance(
                     WebDriverEventListener.class.getClassLoader(),
